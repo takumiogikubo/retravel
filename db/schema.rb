@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(version: 2022_07_19_143412) do
   end
 
   create_table "travels", force: :cascade do |t|
-    t.integer "travel_start"
-    t.integer "travel_finish"
+    t.date "travel_start"
+    t.date "travel_finish"
     t.string "travel_title"
     t.string "destination"
-    t.string "open", default: "f"
+    t.boolean "open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
