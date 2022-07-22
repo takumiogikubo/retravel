@@ -25,13 +25,21 @@ ActiveRecord::Schema.define(version: 2022_07_19_143412) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "travel_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_comments_on_customer_id"
+    t.index ["travel_id"], name: "index_comments_on_travel_id"
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "account", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.text "self_introduction", default: "", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -42,28 +50,50 @@ ActiveRecord::Schema.define(version: 2022_07_19_143412) do
   end
 
   create_table "follows", force: :cascade do |t|
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_follows_on_customer_id"
   end
 
   create_table "goods", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "travel_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_goods_on_customer_id"
+    t.index ["travel_id"], name: "index_goods_on_travel_id"
   end
 
   create_table "travel_details", force: :cascade do |t|
+    t.date "travel_date", null: false
+    t.string "travel_title_detail", default: "", null: false
+    t.time "start_time", null: false
+    t.time "finish_time", null: false
+    t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "travels", force: :cascade do |t|
-    t.date "travel_start"
-    t.date "travel_finish"
-    t.string "travel_title"
-    t.string "destination"
+    t.integer "customer_id"
+    t.integer "travel_detail_id"
+    t.date "travel_start", null: false
+    t.date "travel_finish", null: false
+    t.string "travel_title", default: "", null: false
+    t.string "destination", default: "", null: false
     t.boolean "open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_travels_on_customer_id"
+    t.index ["travel_detail_id"], name: "index_travels_on_travel_detail_id"
   end
 
+  add_foreign_key "comments", "customers"
+  add_foreign_key "comments", "travels"
+  add_foreign_key "follows", "customers"
+  add_foreign_key "goods", "customers"
+  add_foreign_key "goods", "travels"
+  add_foreign_key "travels", "customers"
+  add_foreign_key "travels", "travel_details"
 end
