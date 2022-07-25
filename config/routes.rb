@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  
+  
 
   devise_for :customers,skip:[:password],controllers:{
     registrations:"public/registrations",
@@ -15,11 +18,9 @@ Rails.application.routes.draw do
       member do
         get 'unsubscrib'
       end
-      
       collection do
         patch 'withdraw'
       end
-        
     end
     root to: 'travel#index'
     resources :travels, only: [:new,:create,:edit,:update,:destroy]
