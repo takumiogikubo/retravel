@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
-  
-  
+
+
+
 
   devise_for :customers,skip:[:password],controllers:{
     registrations:"public/registrations",
@@ -17,12 +17,15 @@ Rails.application.routes.draw do
     resources :customers, only:[:edit,:update] do
       member do
         get 'unsubscrib'
+        get 'follows'
+        get 'followers'
+        get 'goods'
       end
       collection do
         patch 'withdraw'
       end
     end
-    root to: 'travel#index'
+    root to: "travels#index"
     resources :travels, only: [:new,:create,:edit,:update,:destroy]
     resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
     resources :follows, only: [:create,:destroy]
