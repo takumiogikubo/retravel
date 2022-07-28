@@ -1,0 +1,9 @@
+<%= image_tag @customer.get_profile_image(100,100) %>
+<%= @customer.id%>
+<%= @customer.name%>
+<%= @customer.account%>
+<%= @customer.email%>
+<%= @customer.is_active%>
+<%= @customer.self_introduction%>
+
+<%= link_to "編集",edit_admin_customer_path(@customer.id)%>

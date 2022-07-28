@@ -19,13 +19,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-  
+
   def customer_state
     @customer=Customer.find_by(account: params[:customer][:account])
     return if !@customer
     if @customer.valid_password?(params[:customer][:passwprd]) && !@customer.is_active
       redirect_to new_customer_session_path
     end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

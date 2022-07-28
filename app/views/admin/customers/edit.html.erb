@@ -1,0 +1,41 @@
+
+<%= image_tag @customer.get_profile_image(100,100) %>
+
+<%= form_with model:[:admin,@customer] do |f|%>
+
+<div class="field">
+  <%= "会員ID" %>
+  <%= @customer.id%>
+</div>
+
+<div class="field">
+  <%= f.label :名前 %>
+  <%= f.text_field :name, autofocus: true, autocomplete: "name"  %>
+</div>
+
+<div class="field">
+  <%= f.label :アカウント名 %>
+  <%= f.text_field :account, autofocus: true, autocomplete: "account"  %>
+</div>
+
+<div class="field">
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+
+<div class="field">
+  <%= f.label :ステータス%>
+  <%= f.radio_button :is_active,"false"%>
+  <%= f.label :is_active,"有効",value:"false"%>
+  <%= f.radio_button :is_active,"true"%>
+  <%= f.label :is_active,"退会",value:"true"%>
+</div>
+
+<div class="field">
+  <%= "自己紹介文" %><br />
+  <%= @customer.self_introduction%>
+</div>
+
+<%= f.submit '変更を保存'%>
+
+<% end %>

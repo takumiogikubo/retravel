@@ -33,7 +33,8 @@ Rails.application.routes.draw do
     resources :goods, only: [:create,:destroy]
   end
 
-  scope module: :admin do
+  namespace :admin do
+    root to: "homes#top"
     resources :customers, only:[:show,:edit,:update]
     resources :travels, only:[:index,:show,:destroy]
   end
