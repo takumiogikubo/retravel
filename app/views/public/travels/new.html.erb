@@ -2,7 +2,14 @@
 
 <%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
 <%= f.text_field :travel_title%><br />
-<%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%>
-<%= link_to "＋",new_travel_detail_path%>
-
+<%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%><br />
+<%= f.submit "登録" %>
 <%end%>
+
+<%= @travel_details.each do |travel_detail| %><br />
+<%= travel_detail.travel_date %><br />
+<%= travel_detail.start_time %><%= travel_detail.finish_time %><br />
+<%= travel_detail.travel_title_detail %>
+<%end%>
+
+<%= link_to "＋",new_travel_detail_path%>

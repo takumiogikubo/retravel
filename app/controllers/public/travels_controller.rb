@@ -5,6 +5,7 @@ class Public::TravelsController < ApplicationController
   
   def new
     @travel=Travel.new
+    @travel_details=TravelDetail.all
   end
   
   def create

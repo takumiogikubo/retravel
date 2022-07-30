@@ -1,0 +1,8 @@
+<%= form_with model:@travel_detail do |f|%>
+
+<%= f.date_field :travel_date %><br />
+<%= f.text_field :travel_title_detail%><br />
+<%= f.time_field :start_time%>から<%= f.time_field :finish_time%><br />
+<%= f.text_area :memo%><br />
+<%= f.submit "登録" %>
+<%end%>
