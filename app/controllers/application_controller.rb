@@ -11,4 +11,7 @@ class ApplicationController < ActionController::Base
     customers_my_page_path
   end
 
+
+
+
 end
