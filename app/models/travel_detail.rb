@@ -1,5 +1,5 @@
 class TravelDetail < ApplicationRecord
-  
-  belongs_to :travel
-  
+
+  belongs_to :travel, optional: true
+
 end

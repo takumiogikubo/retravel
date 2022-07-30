@@ -6,10 +6,13 @@
 <%= f.submit "登録" %>
 <%end%>
 
-<%= @travel_details.each do |travel_detail| %><br />
-<%= travel_detail.travel_date %><br />
-<%= travel_detail.start_time %><%= travel_detail.finish_time %><br />
+
+
+<% @travel_details.each do |travel_detail| %>
+<%= travel_detail.travel_date %>
+<%= travel_detail.start_time %>〜<%= travel_detail.finish_time %>
 <%= travel_detail.travel_title_detail %>
+<%= travel_detail.memo %><br />
 <%end%>
 
 <%= link_to "＋",new_travel_detail_path%>
