@@ -1,3 +1,8 @@
 <%= form_with model:@travel do |f|%>
 
+<%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
+<%= f.text_field :travel_title%><br />
+<%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%>
+<%= link_to "＋",new_travel_detail_path%>
+
 <%end%>

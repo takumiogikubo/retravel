@@ -1,3 +1,10 @@
 <%= link_to edit_customer_registration_path do %>
   <%= image_tag @customer.get_profile_image(100,100) %>
 <% end %>
+<%= @customer.account%>
+<%= link_to "＋",new_travel_path%>
+
+<p>いいね一覧</p>
+<p>投稿</p>
+<p>フォロワー中</p>
+<p>フォロワー</p>
