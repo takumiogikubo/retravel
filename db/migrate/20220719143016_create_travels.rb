@@ -7,7 +7,7 @@ class CreateTravels < ActiveRecord::Migration[6.1]
       t.date :travel_start,null: false, default: ""
       t.date :travel_finish,null: false, default: ""
       t.string :travel_title,null: false, default: ""
-      t.string :destination,null: false, default: ""
+      t.integer :destination,null: false, default: ""
       t.boolean :open, null: false, default: false
 
       t.timestamps

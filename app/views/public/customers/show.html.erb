@@ -2,7 +2,16 @@
   <%= image_tag @customer.get_profile_image(100,100) %>
 <% end %>
 <%= @customer.account%>
-<%= link_to "＋",new_travel_path%>
+<%= link_to "＋",new_travel_path%><br>
+
+<% @travels.each do |travel|%>
+<%= travel.travel_start %><%= travel.travel_finish %>
+<%= link_to travel_path(travel.id) do %>
+  <%= travel.travel_title%>
+<% end %>
+<%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "編集", edit_travel_path(travel.id) %><br>
+<% end %>
 
 <p>いいね一覧</p>
 <p>投稿</p>

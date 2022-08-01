@@ -26,8 +26,9 @@ Rails.application.routes.draw do
       end
     end
     root to: "travels#index"
-    resources :travels, only: [:new,:create,:edit,:update,:destroy]
-    resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
+    resources :travels, only: [:show,:new,:create,:edit,:update,:destroy] do
+      resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
+    end
     resources :follows, only: [:create,:destroy]
     resources :comments, only: [:create,:destroy]
     resources :goods, only: [:create,:destroy]

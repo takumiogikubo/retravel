@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
   end
 
   create_table "travel_details", force: :cascade do |t|
+    t.integer "travel_id"
     t.date "travel_date", null: false
     t.string "travel_title_detail", default: "", null: false
     t.time "start_time", null: false
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["travel_id"], name: "index_travel_details_on_travel_id"
   end
 
   create_table "travels", force: :cascade do |t|
@@ -109,7 +111,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
     t.date "travel_start", null: false
     t.date "travel_finish", null: false
     t.string "travel_title", default: "", null: false
-    t.string "destination", default: "", null: false
+    t.integer "destination", null: false
     t.boolean "open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
   add_foreign_key "follows", "customers"
   add_foreign_key "goods", "customers"
   add_foreign_key "goods", "travels"
+  add_foreign_key "travel_details", "travels"
   add_foreign_key "travels", "customers"
   add_foreign_key "travels", "travel_details"
 end

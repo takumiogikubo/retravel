@@ -1,0 +1,16 @@
+<%= @travel.travel_start%>から<%= @travel.travel_finish%><br>
+<%= @travel.travel_title%><br>
+<%= @travel.destination_i18n %><br>
+
+<%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
+
+<% @travel_details.each do |travel_detail|%>
+  <%= travel_detail.travel_date%>
+  <%= travel_detail.start_time%>
+  <%= travel_detail.finish_time%>
+  <%= travel_detail.travel_title_detail%>
+  <%= travel_detail.memo%>
+  <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
+  <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%>
+  <br>
+<%end%>
