@@ -1,5 +1,6 @@
 <%= form_with model: @travel do |f|%>
 
+<%= f.file_field :image,accept:"image/*" %><br />
 <%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
 <%= f.text_field :travel_title%><br />
 <%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%><br />

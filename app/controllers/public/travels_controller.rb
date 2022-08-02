@@ -41,7 +41,7 @@ class Public::TravelsController < ApplicationController
   private
 
   def travel_params
-    params.require(:travel).permit(:travel_detail_id,:travel_start,:travel_finish,:travel_title,:destination,:open)
+    params.require(:travel).permit(:image,:travel_detail_id,:travel_start,:travel_finish,:travel_title,:destination,:open)
   end
 
 end
