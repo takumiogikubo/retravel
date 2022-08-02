@@ -3,5 +3,9 @@
 <%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
 <%= f.text_field :travel_title%><br />
 <%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%><br />
+<%= f.label :open, "公開" %>
+<%= f.radio_button :open, "true" %>
+<%= f.label :open, "非公開" %>
+<%= f.radio_button :open, "false" %>
 <%= f.submit "登録" %>
 <%end%>

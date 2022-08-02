@@ -14,9 +14,15 @@ class Public::TravelDetailsController < ApplicationController
   end
 
   def edit
+    @travel=Travel.find(params[:travel_id])
+    @travel_detail=@travel.travel_details.find(params[:id])
   end
 
   def update
+    travel=Travel.find(params[:travel_id])
+    travel_detail = travel.travel_details.update(travel_detail_params)
+    @travel=Travel.find(params[:travel_id])
+    redirect_to travel_path(@travel.id)
   end
 
   def destroy

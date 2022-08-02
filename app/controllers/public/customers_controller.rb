@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer=Customer.find(current_customer.id)
     @travels=Travel.all
+    @travels1=Travel.where(open:true)
+    @travels2=Travel.where(open:false)
   end
 
   def edit
