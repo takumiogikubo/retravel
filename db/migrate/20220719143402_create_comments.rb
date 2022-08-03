@@ -4,7 +4,8 @@ class CreateComments < ActiveRecord::Migration[6.1]
       
       t.references :customer,foreign_key:true
       t.references :travel,foreign_key:true
-
+      t.string :review,null: false, default: ""
+      
       t.timestamps
     end
   end

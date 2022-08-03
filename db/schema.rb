@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
   create_table "comments", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "travel_id"
+    t.string "review", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_comments_on_customer_id"

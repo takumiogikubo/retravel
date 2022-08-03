@@ -1,0 +1,13 @@
+
+<% @comments.each do |comment|%>
+  <%= image_tag comment.customer.get_profile_image(100,100) %>
+  <%= comment.customer.account %>
+  <%= comment.review %><br>
+<%end%>
+
+
+<%= form_with model: [@travel,@comment] do |f|%>
+<%= f.text_field :review%>
+<%= f.submit "コメント"%>
+<%end%>
+

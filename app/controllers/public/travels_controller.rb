@@ -6,6 +6,7 @@ class Public::TravelsController < ApplicationController
   def show
     @travel = Travel.find(params[:id])
     @travel_details=@travel.travel_details.where(travel_id:params[:id])
+    # @comments=@travel.comments.where(travel_id:params[:id])
   end
 
   def new

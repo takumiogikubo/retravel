@@ -2,6 +2,7 @@
 <%= @travel.travel_start%>から<%= @travel.travel_finish%><br>
 <%= @travel.travel_title%><br>
 <%= @travel.destination_i18n %><br>
+<%= link_to "コメント",new_travel_comment_path(@travel)%>
 
 <%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
 
@@ -12,6 +13,5 @@
   <%= travel_detail.travel_title_detail%>
   <%= travel_detail.memo%>
   <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
-  <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%>
-  <br>
+  <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%> <br>
 <%end%>
