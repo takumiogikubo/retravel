@@ -80,9 +80,12 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "customer_id"
+    t.integer "relationship_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "relationship_id"], name: "index_follows_on_customer_id_and_relationship_id", unique: true
     t.index ["customer_id"], name: "index_follows_on_customer_id"
+    t.index ["relationship_id"], name: "index_follows_on_relationship_id"
   end
 
   create_table "goods", force: :cascade do |t|
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
   add_foreign_key "comments", "customers"
   add_foreign_key "comments", "travels"
   add_foreign_key "follows", "customers"
+  add_foreign_key "follows", "customers", column: "relationship_id"
   add_foreign_key "goods", "customers"
   add_foreign_key "goods", "travels"
   add_foreign_key "travel_details", "travels"

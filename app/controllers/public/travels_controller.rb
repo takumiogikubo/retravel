@@ -1,6 +1,7 @@
 class Public::TravelsController < ApplicationController
 
   def index
+    @travels=Travel.where(open:true)
   end
 
   def show

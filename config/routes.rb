@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    get 'customers/my_page' => 'customers#show'
-    resources :customers, only:[:edit,:update] do
+    get 'customers/my_page' => 'customers#mypage'
+    resources :customers, only:[:show,:edit,:update] do
       member do
         get 'unsubscrib'
         get 'follows'

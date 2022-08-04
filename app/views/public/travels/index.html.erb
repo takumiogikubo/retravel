@@ -1,0 +1,9 @@
+<% @travels.each do |travel|%>
+  <%= link_to customer_path(travel.customer_id) do %>
+    <%= image_tag travel.get_image%>
+  <% end %>
+  <%= travel.customer.account%>
+  <%= travel.travel_start%>
+  <%= travel.travel_finish%>
+  <%= travel.travel_title%>
+<%end%>

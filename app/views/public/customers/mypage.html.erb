@@ -1,0 +1,49 @@
+<%= link_to edit_customer_registration_path do %>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+<% end %>
+<%= @customer.account%>
+<p>いいね一覧</p>
+<p>投稿</p>
+<p>フォロワー中</p>
+<p>フォロワー</p>
+<%#= render 'public/follows/follow_button', customer: @customer %>
+
+<%= link_to "＋",new_travel_path%><br>
+
+<%= link_to "すべて",customers_my_page_path,class:"text-secondary"%>
+<%= link_to "公開",customers_my_page_path(1),class:"text-secondary"%>
+<%= link_to "非公開",customers_my_page_path(2),class:"text-secondary"%><br>
+
+
+<% if current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.1') %>
+  <% @travels1.each do |travel|%>
+  <%= travel.open%>
+  <%= travel.travel_start %><%= travel.travel_finish %>
+  <%= link_to travel_path(travel.id) do %>
+    <%= travel.travel_title%>
+  <% end %>
+  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to "編集", edit_travel_path(travel.id) %><br>
+  <% end %>
+<% elsif current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.2')%>
+  <% @travels2.each do |travel|%>
+  <%= travel.open%>
+  <%= travel.travel_start %><%= travel.travel_finish %>
+  <%= link_to travel_path(travel.id) do %>
+    <%= travel.travel_title%>
+  <% end %>
+  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to "編集", edit_travel_path(travel.id) %><br>
+  <% end %>
+<% else%>
+  <% @travels.each do |travel|%>
+  <%= travel.open%>
+  <%= travel.travel_start %><%= travel.travel_finish %>
+  <%= link_to travel_path(travel.id) do %>
+    <%= travel.travel_title%>
+  <% end %>
+  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to "編集", edit_travel_path(travel.id) %><br>
+  <% end %>
+<% end %>
+
