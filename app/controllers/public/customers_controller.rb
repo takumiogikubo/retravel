@@ -35,12 +35,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def followings
-    
-
+    @customer =Customer.find(params[:id])
+    @customers =@customer.followings
   end
 
   def followers
-
+    @customer =Customer.find(params[:id])
+    @customers =@customer.followers
   end
 
   def good

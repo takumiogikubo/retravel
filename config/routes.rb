@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:show,:edit,:update] do
       member do
         get 'unsubscrib'
-        get 'following'
+        get 'followings'
         get 'followers'
         get 'goods'
       end
