@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_27_060026) do
+ActiveRecord::Schema.define(version: 2022_08_05_115638) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
     t.index ["travel_id"], name: "index_goods_on_travel_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "follow_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
+    t.index ["customer_id"], name: "index_relationships_on_customer_id"
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+  end
+
   create_table "travel_details", force: :cascade do |t|
     t.integer "travel_id"
     t.date "travel_date", null: false
@@ -131,6 +141,8 @@ ActiveRecord::Schema.define(version: 2022_07_27_060026) do
   add_foreign_key "follows", "customers", column: "relationship_id"
   add_foreign_key "goods", "customers"
   add_foreign_key "goods", "travels"
+  add_foreign_key "relationships", "customers"
+  add_foreign_key "relationships", "customers", column: "follow_id"
   add_foreign_key "travel_details", "travels"
   add_foreign_key "travels", "customers"
   add_foreign_key "travels", "travel_details"

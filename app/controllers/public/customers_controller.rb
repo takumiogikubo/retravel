@@ -34,10 +34,13 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def follow
+  def followings
+    
+
   end
 
-  def follower
+  def followers
+
   end
 
   def good

@@ -5,9 +5,9 @@
 <%= @customer.account%>
 <p>いいね一覧</p>
 <p>投稿</p>
-<p>フォロワー中</p>
-<p>フォロワー</p>
-<%#= render 'public/follows/follow_button', customer: @customer %>
+
+<%= render 'public/relationships/follow_button', customer: @customer %>
+
 
 <% @travels.each do |travel|%>
   <%= travel.open%>

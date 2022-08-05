@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:show,:edit,:update] do
       member do
         get 'unsubscrib'
-        get 'follows'
+        get 'following'
         get 'followers'
         get 'goods'
       end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
       resources :comments, only: [:new,:create,:destroy]
     end
-    resources :follows, only: [:create,:destroy]
+    resources :relationships, only: [:create,:destroy]
     resources :goods, only: [:create,:destroy]
   end
 
