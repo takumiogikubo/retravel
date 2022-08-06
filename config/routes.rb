@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     resources :travels, only: [:show,:new,:create,:edit,:update,:destroy] do
       resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
       resources :comments, only: [:new,:create,:destroy]
+      resource :goods, only: [:create,:destroy]
     end
     resources :relationships, only: [:create,:destroy]
-    resources :goods, only: [:create,:destroy]
   end
 
   namespace :admin do

@@ -5,6 +5,8 @@
 <%= @customer.account%>
 <p>いいね一覧</p>
 <p>投稿</p>
+<%= link_to "フォロー(#{@customer.followings.count})", followings_customer_path(@customer), class: "nav-link" %>
+<%= link_to "フォロワー(#{@customer.followers.count})", followers_customer_path(@customer), class: "nav-link" %>
 
 <%= render 'public/relationships/follow_button', customer: @customer %>
 

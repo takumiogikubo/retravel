@@ -7,12 +7,12 @@ class Travel < ApplicationRecord
 
   has_one_attached :image
 
-  def get_image
+  def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/sample.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image
+    image.variant(resize_to_limit: [width, height]).processed
   end
 
   enum destination: {
@@ -102,7 +102,10 @@ class Travel < ApplicationRecord
     austria: 64,
     # その他
     another: 65
-
   }
+
+  def good_by?(customer)
+    goods.exists?(customer_id: customer.id)
+  end
 
 end

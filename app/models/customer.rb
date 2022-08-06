@@ -27,7 +27,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_active == false)
   end
-  
+
   def follow(other_customer)
     unless self == other_customer
      self.relationships.find_or_create_by(follow_id: other_customer.id)

@@ -1,7 +1,22 @@
-<%= image_tag @travel.get_image%>
+<%= image_tag @travel.get_image(100,100)%>
 <%= @travel.travel_start%>から<%= @travel.travel_finish%><br>
 <%= @travel.travel_title%><br>
 <%= @travel.destination_i18n %><br>
+
+<% if @travel.good_by?(current_customer) %>
+  <p>
+    <%= link_to travel_goods_path(@travel), method: :delete do %>
+      ♥<%= @travel.goods.count %> いいね
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to travel_goods_path(@travel), method: :post do %>
+      ♡<%= @travel.goods.count %> いいね
+    <% end %>
+  </p>
+<% end %>
+
 <%= link_to "コメント",new_travel_comment_path(@travel)%>
 
 <%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
