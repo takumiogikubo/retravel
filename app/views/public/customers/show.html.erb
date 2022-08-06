@@ -3,12 +3,15 @@
   <%= image_tag @customer.get_profile_image(100,100) %>
 <% end %>
 <%= @customer.account%>
-<p>いいね一覧</p>
 <p>投稿</p>
 <%= link_to "フォロー(#{@customer.followings.count})", followings_customer_path(@customer), class: "nav-link" %>
 <%= link_to "フォロワー(#{@customer.followers.count})", followers_customer_path(@customer), class: "nav-link" %>
 
-<%= render 'public/relationships/follow_button', customer: @customer %>
+<% if customer_signed_in? %>
+  <%= render 'public/relationships/follow_button', customer: @customer %>
+<%end%>
+
+<%= @customer.self_introduction%><br>
 
 
 <% @travels.each do |travel|%>

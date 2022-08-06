@@ -10,19 +10,21 @@
   <%end%><br>
     <%= image_tag travel.get_image(300,300)%><br>
 
+  <% if customer_signed_in? %>
     <% if travel.good_by?(current_customer) %>
-    <p>
-      <%= link_to travel_goods_path(travel), method: :delete do %>
-        ♥<%= travel.goods.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to travel_goods_path(travel), method: :post do %>
-        ♡<%= travel.goods.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+      <p>
+        <%= link_to travel_goods_path(travel), method: :delete do %>
+          ♥<%= travel.goods.count %> いいね
+        <% end %>
+      </p>
+      <% else %>
+      <p>
+        <%= link_to travel_goods_path(travel), method: :post do %>
+          ♡<%= travel.goods.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
+    <%= link_to "コメント",new_travel_comment_path(travel)%><br>
+  <%end%>
 
-  <%= link_to "コメント",new_travel_comment_path(travel)%><br>
 <%end%>

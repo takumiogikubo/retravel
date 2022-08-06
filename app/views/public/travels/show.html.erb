@@ -3,23 +3,28 @@
 <%= @travel.travel_title%><br>
 <%= @travel.destination_i18n %><br>
 
-<% if @travel.good_by?(current_customer) %>
-  <p>
-    <%= link_to travel_goods_path(@travel), method: :delete do %>
-      ♥<%= @travel.goods.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to travel_goods_path(@travel), method: :post do %>
-      ♡<%= @travel.goods.count %> いいね
-    <% end %>
-  </p>
-<% end %>
+<% if customer_signed_in? %>
+  <% if @travel.good_by?(current_customer) %>
+    <p>
+      <%= link_to travel_goods_path(@travel), method: :delete do %>
+        ♥<%= @travel.goods.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to travel_goods_path(@travel), method: :post do %>
+        ♡<%= @travel.goods.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+<%end%>
 
-<%= link_to "コメント",new_travel_comment_path(@travel)%>
-
-<%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
+<%= link_to "コメント",new_travel_comment_path(@travel)%><br>
+<% if customer_signed_in? %>
+  <% if @travel.customer.id == current_customer.id %>
+    <%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
+  <%end%>
+<%end%>
 
 <% @travel_details.each do |travel_detail|%>
   <%= travel_detail.travel_date%>
@@ -27,6 +32,10 @@
   <%= travel_detail.finish_time%>
   <%= travel_detail.travel_title_detail%>
   <%= travel_detail.memo%>
-  <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
-  <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%> <br>
+  <% if customer_signed_in? %>
+    <% if @travel.customer.id == current_customer.id %>
+      <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
+      <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%> <br>
+    <%end%>
+  <%end%>
 <%end%>

@@ -5,9 +5,10 @@
   <%= comment.review %><br>
 <%end%>
 
-
-<%= form_with model: [@travel,@comment] do |f|%>
-<%= f.text_field :review%>
-<%= f.submit "コメント"%>
+<% if customer_signed_in? %>
+  <%= form_with model: [@travel,@comment] do |f|%>
+  <%= f.text_field :review%>
+  <%= f.submit "コメント"%>
+  <%end%>
 <%end%>
 

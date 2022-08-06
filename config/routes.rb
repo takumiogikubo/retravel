@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         get 'unsubscrib'
         get 'followings'
         get 'followers'
-        get 'goods'
+        get 'good'
       end
       collection do
         patch 'withdraw'

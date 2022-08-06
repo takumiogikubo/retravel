@@ -2,7 +2,7 @@
   <%= image_tag @customer.get_profile_image(100,100) %>
 <% end %>
 <%= @customer.account%>
-<p>いいね一覧</p>
+<%= link_to "いいね一覧",good_customer_path(@customer),class:"text-secondary"%>
 <p>投稿</p>
 <%= link_to "フォロー(#{@customer.followings.count})", followings_customer_path(@customer), class: "nav-link" %>
 <%= link_to "フォロワー(#{@customer.followers.count})", followers_customer_path(@customer), class: "nav-link" %>

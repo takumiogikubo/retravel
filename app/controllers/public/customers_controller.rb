@@ -5,8 +5,10 @@ class Public::CustomersController < ApplicationController
     # @travels= @customer.travels.all
     @travels=@customer.travels.where(open:true)
     # @travels2=@customer.travels.where(open:false)
-    if @customer.id == current_customer.id
-      redirect_to customers_my_page_path
+    if customer_signed_in?
+      if @customer.id == current_customer.id
+        redirect_to customers_my_page_path
+      end
     end
   end
 
@@ -45,6 +47,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def good
+    @travels=current_customer.travels.where(open:true)
   end
 
 end
