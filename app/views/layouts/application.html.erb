@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
     <% if customer_signed_in? %>
+      <%= link_to new_customer_session_path do%>
+        <%= image_tag current_customer.get_profile_image(50,50) %>
+      <%end%>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      <%= link_to "プロフィール編集", edit_customer_registration_path %>
       <%= link_to "わたし", customers_my_page_path %>
       <%= link_to "みんな", root_path %>
     <% else %>
@@ -25,6 +28,11 @@
       <%= link_to "みんな", root_path %>
     <% end %>
     </header>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+
+    </footer>
   </body>
 </html>

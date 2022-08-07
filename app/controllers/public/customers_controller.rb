@@ -20,9 +20,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer=Customer.find(current_customer.id)
   end
 
   def update
+    customer=Customer.find(current_customer.id)
+    customer.update(customer_params)
+    redirect_to customers_my_page_path
   end
 
   def unsubscrib
@@ -48,6 +52,13 @@ class Public::CustomersController < ApplicationController
 
   def good
     @travels=current_customer.travels.where(open:true)
+  end
+
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name,:account,:email,:self_introduction)
   end
 
 end
