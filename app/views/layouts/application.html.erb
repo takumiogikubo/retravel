@@ -14,8 +14,8 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
     <% if customer_signed_in? %>
-      <%= link_to new_customer_session_path do%>
-        <%= image_tag current_customer.get_profile_image(50,50) %>
+      <%= link_to edit_customer_registration_path do%>
+        <%= image_tag current_customer.get_profile_image(50,50),class:"rounded-circle" %>
       <%end%>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       <%= link_to "わたし", customers_my_page_path %>
@@ -28,7 +28,7 @@
       <%= link_to "みんな", root_path %>
     <% end %>
     </header>
-    <main class="mb-auto">
+    <main class="mb-auto my-auto">
     <%= yield %>
     </main>
     <footer class="bg-dark text-white pt-5 pb-4">

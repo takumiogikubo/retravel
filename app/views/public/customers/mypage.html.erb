@@ -1,5 +1,5 @@
-<%= link_to edit_customer_registration_path do %>
-  <%= image_tag @customer.get_profile_image(100,100) %>
+<%= link_to avatar_customer_path(@customer) do %>
+  <%= image_tag @customer.get_profile_image(100,100),class:"rounded-circle"%>
 <% end %>
 <%= @customer.account%>
 <%= link_to "いいね一覧",good_customer_path(@customer),class:"text-secondary"%>

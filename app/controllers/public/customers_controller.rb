@@ -1,5 +1,17 @@
 class Public::CustomersController < ApplicationController
 
+  def avatar
+    @customer=Customer.find(current_customer.id)
+  end
+
+
+  def create
+    customer=Customer.find(current_customer.id)
+    customer.save
+    redirect_back fallback_location: root_path
+  end
+
+
   def show
     @customer=Customer.find(params[:id])
     # @travels= @customer.travels.all
@@ -26,7 +38,7 @@ class Public::CustomersController < ApplicationController
   def update
     customer=Customer.find(current_customer.id)
     customer.update(customer_params)
-    redirect_to customers_my_page_path
+    redirect_back fallback_location: root_path
   end
 
   def unsubscrib
@@ -58,7 +70,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name,:account,:email,:self_introduction)
+    params.require(:customer).permit(:profile_image,:name,:account,:email,:self_introduction)
   end
 
 end
