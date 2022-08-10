@@ -1,5 +1,21 @@
 
 .bg-silver{
-  background-color: #EEEEEE;
+  color: #196989;
+  font-family: "ニコカ";
+  font-size:50px;
 }
 
+.signin-card{
+  width: 70%;
+  border-radius: 20px;
+  box-shadow: 0 0 8px gray;
+  background-color: #fff799;
+}
+
+.signin-submit{
+  color: #196989;
+}
+
+.box{
+  flex-grow: 1;
+}
