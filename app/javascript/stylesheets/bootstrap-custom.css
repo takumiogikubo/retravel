@@ -16,6 +16,10 @@
   color: #196989;
 }
 
+.sigout-link{
+  color: #b6195d;
+}
+
 .box{
   flex-grow: 1;
 }
