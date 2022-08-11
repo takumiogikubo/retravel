@@ -18,6 +18,7 @@
         <%= image_tag current_customer.get_profile_image(50,50),class:"rounded-circle" %>
       <%end%>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      <%= link_to "退会する", unsubscrib_customer_path(current_customer.id)%>
       <%= link_to "わたし", customers_my_page_path %>
       <%= link_to "みんな", root_path %>
     <% else %>
@@ -26,6 +27,7 @@
       <%end%>
       <%= link_to "みんな", root_path %>
     <% end %>
+
     </header>
     <main class="mb-auto">
     <%= yield %>
