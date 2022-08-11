@@ -23,3 +23,29 @@
 .box{
   flex-grow: 1;
 }
+
+.unsubscrib-text{
+  font-size: 25px;
+}
+
+.login-btn{
+  width: 100%;
+}
+
+.login-bg{
+  background-color: rgba(255,255,255,0);
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+  height: 60px;
+  color: rgba(225,225,225,0.7);
+}
+
+.btn-light{
+  color: rgba(64,39,23,0.3);
+  cursor: pointer;
+  font-family: "ニコカ";
+  font-size:30px;
+}
+

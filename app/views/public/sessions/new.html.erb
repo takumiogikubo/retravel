@@ -1,20 +1,19 @@
-<p>会員の方はこちらからログイン</p>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :アカウント名 %>
-    <%= f.text_field :account, autofocus: true, autocomplete: "account" %>
+<div class="jumbotron2 mb-n4 d-flex align-items-center">
+  <div class="mx-auto" style="width: 30%;">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.text_field :account,style: "width:100%",class:"login-bg mb-3", autofocus: true, autocomplete: "account", placeholder: "アカウント名" %><br>
+      <%= f.password_field :password,style: "width:100%",class:"login-bg mb-3", autocomplete: "current-password" , placeholder: "パスワード"%>
+      <div>
+        <%= f.submit "Login" ,class:"btn btn-light btn-lg login-btn mx-auto"%>
+      </div>
+    <% end %>
   </div>
+</div>
+<div>
+  <p class="mb-0 mt-n3 text-right text-muted">Image by
+  <%= link_to"Dariusz Sankowski","https://pixabay.com/users/dariuszsankowski-1441456/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1130731",class:"text-muted" %>
+  from
+  <%= link_to"Pixabay","https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1130731",class:"text-muted"%>
+  </p>
+</div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<p>新規登録がお済みでない方</p>
-<p><%= link_to"こちら",new_customer_registration_path %>から新規登録を行ってください。</p>

@@ -22,9 +22,9 @@
       <%= link_to "わたし", customers_my_page_path %>
       <%= link_to "みんな", root_path %>
     <% else %>
-      <%= link_to new_customer_session_path do%>
-        <%= image_tag 'no_image', size: "50x50" %>
-      <%end%>
+      <%= image_tag 'no_image', size: "50x50" %>
+      <%= link_to "ログイン",new_customer_session_path%>
+      <%= link_to "サインイン",new_customer_registration_path%>
       <%= link_to "みんな", root_path %>
     <% end %>
 
