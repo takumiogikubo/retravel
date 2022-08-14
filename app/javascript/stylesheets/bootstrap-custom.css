@@ -39,7 +39,10 @@
   border-color: white;
   border-radius: 5px;
   height: 60px;
-  color: rgba(225,225,225,0.7);
+}
+
+.login-bg::-webkit-input-placeholder {
+	color: white;
 }
 
 .btn-light{
@@ -49,3 +52,60 @@
   font-size:30px;
 }
 
+.fa-plus-circle{
+  color: #196989;
+}
+
+.mypage-account{
+  width: 100PX;
+}
+
+.followings-text{
+  color: black;
+}
+
+.followers-text{
+  color: black;
+}
+
+.open-bag{
+  /*color: #fff56c;*/
+  color: #eed13f;
+}
+
+.close-bag{
+  color: #dddddd;
+}
+
+.mypage-title{
+  color: black;
+}
+
+.chart{
+  width: 100%;
+}
+
+.fa-times-circle{
+  /*color: red;*/
+  color: #f67690;
+}
+
+.fa-minus-circle{
+  /*color: #339900;*/
+  color: #3aacad;
+}
+
+.travel-bg{
+  background-color: #f6f0cc;
+  border-radius: 20px;
+}
+
+.mypage-container{
+  height: 100vh;
+}
+
+.mypage-container-color{
+  height: 100vh;
+  background-color: white;
+  width: 80%;
+}

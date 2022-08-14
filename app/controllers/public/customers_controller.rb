@@ -63,7 +63,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def good
-    @travels=current_customer.travels.where(open:true)
+    goods=Good.where(customer_id: current_customer.id).pluck(:travel_id)
+    @good_travels=Travel.find(goods)
   end
 
 

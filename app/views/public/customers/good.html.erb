@@ -1,4 +1,4 @@
-<% @travels.each do |travel|%>
+<% @good_travels.each do |travel|%>
   <%= link_to customer_path(travel.customer_id) do %>
     <%= image_tag travel.customer.get_profile_image(100,100)%>
   <% end %>

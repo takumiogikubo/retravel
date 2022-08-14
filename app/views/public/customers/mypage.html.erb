@@ -1,49 +1,125 @@
-<%= link_to avatar_customer_path(@customer) do %>
-  <%= image_tag @customer.get_profile_image(100,100),class:"rounded-circle"%>
-<% end %>
-<%= @customer.account%>
-<%= link_to "いいね一覧",good_customer_path(@customer),class:"text-secondary"%>
-<p>投稿</p>
-<%= link_to "フォロー(#{@customer.followings.count})", followings_customer_path(@customer), class: "nav-link" %>
-<%= link_to "フォロワー(#{@customer.followers.count})", followers_customer_path(@customer), class: "nav-link" %>
-<%#= render 'public/follows/follow_button', customer: @customer %>
+<div class="bg-secondary">
+  <div class="container mypage-container">
+    <div class="mypage-container-color mx-auto">
+      <div class="row justify-content-end mr-5">
+        <%= link_to new_travel_path do%>
+          <i class="fas fa-plus-circle fa-4x mt-3 mb-n5"></i>
+        <%end%><br>
+      </div>
+      <div class="row">
+        <div class="col-5 clearfix pr-4">
+          <%= link_to avatar_customer_path(@customer) do %>
+            <%= image_tag @customer.get_profile_image(100,100),class:"rounded-circle float-right"%>
+          <% end %>
+        </div>
+        <div class="col-7 px-0 mt-3 pl-4">
+          <div class="d-flex align-items-center">
+            <h2 class="mb-0 mypage-account border-bottom "><%= @customer.account%></h2>
+            <div class="ml-2 mr-5"><%= link_to "いいね一覧",good_customer_path(@customer),class:"btn btn-sm btn-outline-dark py-0"%></div>
+          </div>
+          <div class="d-flex align-items-center">
+            <%= "公開中 #{@travels1.count}"%>
+            <%= link_to "フォロー #{@customer.followings.count}", followings_customer_path(@customer), class: "nav-link pl-3 pr-0 followings-text" %>
+            <%= link_to "フォロワー #{@customer.followers.count}", followers_customer_path(@customer), class: "nav-link pl-3 pr-0 followers-text" %>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5 mb-3">
+        <div class="col-7">
+          <div class="d-flex justify-content-around">
+            <%= link_to "　　すべて　　",customers_my_page_path,class:"text-secondary btn btn-outline-dark"%>
+            <%= link_to "　　公　開　　",customers_my_page_path(1),class:"text-secondary btn btn-outline-dark"%>
+            <%= link_to "　　非公開　　",customers_my_page_path(2),class:"text-secondary btn btn-outline-dark"%>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <div class="col-8">
+          <div class="d-flex justify-content-around">
+            <div class="chart">
+              <% if current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.1') %>
+                <% @travels1.reverse.each do |travel|%>
+                  <div class="border border-light travel-bg px-3 py-1 mb-2 d-flex align-items-center bd-highlight">
+                    <% if travel.open %>
+                      <i class="fas fa-suitcase open-bag fa-3x bd-highlight"></i>
+                    <% else %>
+                      <i class="fas fa-suitcase close-bag fa-3x bd-highlight"></i>
+                    <%end%>
+                    <h6 class="ml-5 mb-0 bd-highlight"><%= travel.travel_start.strftime('%Y/%m/%d') %><br>
+                    〜<%= travel.travel_finish.strftime('%Y/%m/%d') %></h6>
+                    <%= link_to travel_path(travel.id),class:" flex-grow-1 bd-highlight ml-3 d-flex justify-content-center" do %>
+                      <h3 class="mypage-title mb-0"><strong><%= travel.travel_title%></strong></h3>
+                    <% end %>
+                    <div class="d-flex flex-column bd-highlight">
+                      <%= link_to travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" do%>
+                        <i class="fas fa-times-circle fa-2x"></i>
+                      <%end%>
+                      <%= link_to edit_travel_path(travel.id) do%>
+                        <i class="fas fa-minus-circle fa-2x"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                <% end %>
+              <% elsif current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.2')%>
+                <% @travels2.reverse.each do |travel|%>
+                  <div class="border border-light travel-bg px-3 py-1 mb-2 d-flex align-items-center bd-highlight">
+                    <% if travel.open %>
+                      <i class="fas fa-suitcase open-bag fa-3x bd-highlight"></i>
+                    <% else %>
+                      <i class="fas fa-suitcase close-bag fa-3x bd-highlight"></i>
+                    <%end%>
+                    <h6 class="ml-5 mb-0 bd-highlight"><%= travel.travel_start.strftime('%Y/%m/%d') %><br>
+                    〜<%= travel.travel_finish.strftime('%Y/%m/%d') %></h6>
+                    <%= link_to travel_path(travel.id),class:" flex-grow-1 bd-highlight ml-3 d-flex justify-content-center" do %>
+                      <h3 class="mypage-title mb-0"><strong><%= travel.travel_title%></strong></h3>
+                    <% end %>
+                    <div class="d-flex flex-column bd-highlight">
+                      <%= link_to travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" do%>
+                        <i class="fas fa-times-circle fa-2x"></i>
+                      <%end%>
+                      <%= link_to edit_travel_path(travel.id) do%>
+                        <i class="fas fa-minus-circle fa-2x"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                <% end %>
+              <% else%>
+                <% @travels.reverse.each do |travel|%>
+                  <div class="border border-light travel-bg px-3 py-1 mb-2 d-flex align-items-center bd-highlight">
+                    <% if travel.open %>
+                      <i class="fas fa-suitcase open-bag fa-3x bd-highlight"></i>
+                    <% else %>
+                      <i class="fas fa-suitcase close-bag fa-3x bd-highlight"></i>
+                    <%end%>
+                    <h6 class="ml-5 mb-0 bd-highlight"><%= travel.travel_start.strftime('%Y/%m/%d') %><br>
+                    〜<%= travel.travel_finish.strftime('%Y/%m/%d') %></h6>
+                    <%= link_to travel_path(travel.id),class:" flex-grow-1 bd-highlight ml-3 d-flex justify-content-center" do %>
+                      <h3 class="mypage-title mb-0"><strong><%= travel.travel_title%></strong></h3>
+                    <% end %>
+                    <div class="d-flex flex-column bd-highlight">
+                      <%= link_to travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" do%>
+                        <i class="fas fa-times-circle fa-2x"></i>
+                      <%end%>
+                      <%= link_to edit_travel_path(travel.id) do%>
+                        <i class="fas fa-minus-circle fa-2x"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "＋",new_travel_path%><br>
-
-<%= link_to "すべて",customers_my_page_path,class:"text-secondary"%>
-<%= link_to "公開",customers_my_page_path(1),class:"text-secondary"%>
-<%= link_to "非公開",customers_my_page_path(2),class:"text-secondary"%><br>
 
 
-<% if current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.1') %>
-  <% @travels1.each do |travel|%>
-  <%= travel.open%>
-  <%= travel.travel_start %><%= travel.travel_finish %>
-  <%= link_to travel_path(travel.id) do %>
-    <%= travel.travel_title%>
-  <% end %>
-  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <%= link_to "編集", edit_travel_path(travel.id) %><br>
-  <% end %>
-<% elsif current_page?('https://498a5297a02d4522b18f7164798f32db.vfs.cloud9.us-east-1.amazonaws.com/customers/my_page.2')%>
-  <% @travels2.each do |travel|%>
-  <%= travel.open%>
-  <%= travel.travel_start %><%= travel.travel_finish %>
-  <%= link_to travel_path(travel.id) do %>
-    <%= travel.travel_title%>
-  <% end %>
-  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <%= link_to "編集", edit_travel_path(travel.id) %><br>
-  <% end %>
-<% else%>
-  <% @travels.each do |travel|%>
-  <%= travel.open%>
-  <%= travel.travel_start %><%= travel.travel_finish %>
-  <%= link_to travel_path(travel.id) do %>
-    <%= travel.travel_title%>
-  <% end %>
-  <%= link_to "削除", travel_path(travel.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <%= link_to "編集", edit_travel_path(travel.id) %><br>
-  <% end %>
-<% end %>
+
+
+
+
+
 
