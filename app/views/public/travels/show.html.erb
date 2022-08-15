@@ -1,7 +1,47 @@
-<%= image_tag @travel.get_image(100,100)%>
-<%= @travel.travel_start%>から<%= @travel.travel_finish%><br>
-<%= @travel.travel_title%><br>
-<%= @travel.destination_i18n %><br>
+
+<div class="row mt-3">
+  <div class="col-3 pl-5">
+    <%= image_tag @travel.get_image(250,250)%>
+  </div>
+  <div class="col-6 mt-3">
+    <div class="d-flex align-items-center justify-content-center">
+      <h4 class="mb-0 border px-3"><%= @travel.travel_start.strftime('%Y年%m月%d日')%></h4><p class="mb-0">から</p><h4 class="mb-0 border px-3"><%= @travel.travel_finish.strftime('%Y年%m月%d日')%></h4>
+    </div>
+    <div class="mx-auto mt-3 border travel-show-title">
+      <h1 class="d-flex justify-content-center mb-0"><%= @travel.travel_title%></h1>
+    </div>
+    <div class="d-flex justify-content-center mt-1">
+      <h5><%= @travel.destination_i18n %></h5>
+    </div>
+  </div>
+  <div class="col-3 d-flex flex-row-reverse pr-5">
+    <% if customer_signed_in? %>
+      <% if @travel.customer.id == current_customer.id %>
+        <%= link_to new_travel_travel_detail_path(@travel) do%>
+          <i class="fas fa-plus-circle fa-4x mt-3 mr-5"></i>
+        <%end%>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+
+
+
+
+<% @travel_details.each do |travel_detail|%>
+  <%= travel_detail.travel_date%>
+  <%= travel_detail.start_time%>
+  <%= travel_detail.finish_time%>
+  <%= travel_detail.travel_title_detail%>
+  <%= travel_detail.memo%>
+  <% if customer_signed_in? %>
+    <% if @travel.customer.id == current_customer.id %>
+      <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
+      <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%> <br>
+    <%end%>
+  <%end%>
+<%end%>
+
 
 <% if customer_signed_in? %>
   <% if @travel.good_by?(current_customer) %>
@@ -20,22 +60,3 @@
 <%end%>
 
 <%= link_to "コメント",new_travel_comment_path(@travel)%><br>
-<% if customer_signed_in? %>
-  <% if @travel.customer.id == current_customer.id %>
-    <%= link_to "＋",new_travel_travel_detail_path(@travel)%><br>
-  <%end%>
-<%end%>
-
-<% @travel_details.each do |travel_detail|%>
-  <%= travel_detail.travel_date%>
-  <%= travel_detail.start_time%>
-  <%= travel_detail.finish_time%>
-  <%= travel_detail.travel_title_detail%>
-  <%= travel_detail.memo%>
-  <% if customer_signed_in? %>
-    <% if @travel.customer.id == current_customer.id %>
-      <%= link_to "削除",travel_travel_detail_path(@travel,travel_detail),method: :delete %>
-      <%= link_to "編集",edit_travel_travel_detail_path(@travel,travel_detail)%> <br>
-    <%end%>
-  <%end%>
-<%end%>

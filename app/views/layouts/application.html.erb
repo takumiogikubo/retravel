@@ -12,7 +12,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
+    <header class="shadow-sm border-bottom">
     <% if customer_signed_in? %>
       <%= link_to edit_customer_registration_path do%>
         <%= image_tag current_customer.get_profile_image(50,50),class:"rounded-circle" %>
