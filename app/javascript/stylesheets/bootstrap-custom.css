@@ -113,3 +113,40 @@
 .travel-show-title{
   width: 60%;
 }
+
+.travel-show-border{
+  border-right:1px solid;
+}
+
+.travel-show-table{
+  width:100%;
+}
+
+.travel_detail-show-title{
+  width: 30%;
+}
+
+.travel_detail-show-memo{
+  width: 60%;
+  height:4em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.travel_detail-show-date{
+  height: 4em;
+}
+
+.travel-show-good-comment{
+  color: #888888;
+  font-size: 23px;
+
+}
+
+.travel-show-span{
+  color: #c76781;
+}
+
+.travel-show-good-comment_decoration{
+  text-decoration: none !important;
+}
