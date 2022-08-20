@@ -1,14 +1,19 @@
-<%= form_with model: @travel do |f|%>
-
-<%= f.file_field :image, accept: "image/*" %><br />
-<%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
-<%= f.text_field :travel_title%><br />
-<%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%><br />
-<%= f.label :open, "公開" %>
-<%= f.radio_button :open, "true" %>
-<%= f.label :open, "非公開" %>
-<%= f.radio_button :open, "false" %>
-<%= f.submit "登録" %>
-<%end%>
+<%#= f.file_field :image, accept: "image/*" %>
+<div class="container">
+  <div class="row justify-content-center">
+    <%= form_with model: @travel do |f|%>
+      <h2><%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %></h2>
+      <div class="mx-auto" style="width: 60%;"><%= f.text_field :travel_title,style: "width:100%"%></div>
+      <div class="mx-auto" style="width: 40%;"><%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]},{},{ class:"destination-select"}%></div>
+      <div class="mx-auto d-flex justify-content-around" style="width: 40%;">
+        <%= f.radio_button :open, "true" %>
+        <label for="travel_open_true">公　開</label>
+        <%= f.radio_button :open, "false" %>
+        <label for="travel_open_false">非公開</label>
+      </div>
+      <div class="mx-auto" style="width: 40%;"><%= f.submit "登録",class:"travel-btn"%></div>
+    <%end%>
+  </div>
+</div>
 
 

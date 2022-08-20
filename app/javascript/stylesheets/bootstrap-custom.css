@@ -150,3 +150,30 @@
 .travel-show-good-comment_decoration{
   text-decoration: none !important;
 }
+
+
+input[type=radio] {
+  display: none;
+}
+
+input[type="radio"]+label {
+  display:inline;
+  font-size:22px;
+  border:1px solid black;
+  border-radius:10px;
+  padding:5px;
+  background:white;
+  color:black;
+}
+
+input[type="radio"]:checked+label{
+  background:#ffe556;
+}
+
+.destination-select{
+  width:100%;
+}
+
+.travel-btn{
+  width:100%;
+}
