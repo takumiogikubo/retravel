@@ -15,7 +15,7 @@
         <div class="col-7 px-0 mt-3 pl-4">
           <div class="d-flex align-items-center">
             <h2 class="mb-0 mypage-account border-bottom "><%= @customer.account%></h2>
-            <div class="ml-2 mr-5"><%= link_to "いいね一覧",good_customer_path(@customer),class:"btn btn-sm btn-outline-dark py-0"%></div>
+            <div class="ml-2"><%= link_to "いいね一覧",good_customer_path(@customer),class:"btn btn-sm btn-outline-dark py-0"%></div>
           </div>
           <div class="d-flex align-items-center">
             <%= "公開中 #{@travels1.count}"%>

@@ -31,6 +31,10 @@ Rails.application.routes.draw do
       resources :travel_details, only: [:new,:create,:edit,:update,:destroy]
       resources :comments, only: [:new,:create,:destroy]
       resource :goods, only: [:create,:destroy]
+       member do
+        get 'bestshot'
+        patch 'imageupdate'
+      end
     end
     resources :relationships, only: [:create,:destroy]
   end

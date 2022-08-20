@@ -1,0 +1,7 @@
+<%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+<%= form_with model: @travel,url:imageupdate_travel_path(@travel) do |f|%>
+<%= f.file_field :image,accept:"image/*" %>
+<%= f.submit "登録" %>
+<%end%>
+
+<%= link_to "OK" ,travel_path(@travel)%>

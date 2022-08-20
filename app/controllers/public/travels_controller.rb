@@ -24,6 +24,18 @@ class Public::TravelsController < ApplicationController
     redirect_to customers_my_page_path
   end
 
+  def bestshot
+    @travel = Travel.find(params[:id])
+  end
+
+  def imageupdate
+
+    travel = Travel.find(params[:id])
+    travel.update(travel_params)
+    redirect_back fallback_location: root_path
+  end
+
+
   def edit
     @travel = Travel.find(params[:id])
     # @travel_details=current_customer.travel_details.all
