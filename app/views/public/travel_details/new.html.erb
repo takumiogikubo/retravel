@@ -1,8 +1,17 @@
-<%= form_with model: [@travel,@travel_detail] do |f|%>
-
-<%= f.date_field :travel_date %><br />
-<%= f.text_field :travel_title_detail%><br />
-<%= f.time_field :start_time%>から<%= f.time_field :finish_time%><br />
-<%= f.text_area :memo%><br />
-<%= f.submit "登録" %>
-<%end%>
+<div class="containe mt-5">
+  <div class="col-4 mx-auto">
+    <div class="card mx-auto py-3">
+      <div class="row d-flex justify-content-center">
+        <h1 class="travel-detail-new mb-3">schedule</h1>
+        <%= form_with model: [@travel,@travel_detail] do |f|%>
+        <h3 class="mx-auto mb-3" style="width:60%"><%= f.date_field :travel_date,style: "width:100%" %></h3>
+        <div class="mx-auto mb-3" style="width: 60%;"><%= f.text_field :travel_title_detail,class:"input-travel-title-detail",style: "width:100%", placeholder: "タイトルを入力"%></div>
+        <h2 class="mx-auto d-flex justify-content-around mb-3" style="width:90%"><%= f.time_field :start_time%>から<%= f.time_field :finish_time%></h2>
+        <p class="mb-0">〜 memo 〜</p>
+        <div class="mb-4"><%= f.text_area :memo,cols:"50%",  rows: 2 %></div>
+        <div class="mx-auto mb-3" style="width: 40%;"><%= f.submit "Go",class:"btn btn-info travel-btn"%></div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

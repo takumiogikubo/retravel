@@ -1,12 +1,21 @@
-<%= form_with model: @travel do |f|%>
-
-<%= f.file_field :image,accept:"image/*" %><br />
-<%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %><br />
-<%= f.text_field :travel_title%><br />
-<%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]}%><br />
-<%= f.radio_button :open, "true" %>
-<label for="travel_open_true">公開</label>
-<%= f.radio_button :open, "false" %>
-<label for="travel_open_false">非公開</label></br>
-<%= f.submit "登録" %>
-<%end%>
+<div class="containe mt-5">
+  <div class="col-5 mx-auto">
+    <div class="card mx-auto py-3">
+      <div class="row justify-content-center">
+        <h1 class="travel-edit mb-3">　Edit　</h1>
+        <%= form_with model: @travel do |f|%>
+          <h2 class="mt-3 mb-3"><%= f.date_field :travel_start %>から<%= f.date_field :travel_finish %></h2>
+          <div class="mx-auto mb-3" style="width: 30%;"><%= f.select :destination, Travel.destinations.keys.map{|k| [I18n.t("enums.travel.destination.#{k}"), k]},{},{ class:"destination-select"}%></div>
+          <div class="mx-auto mb-3" style="width: 70%;"><%= f.text_field :travel_title,class:"input-travel-title",style: "width:100%"%></div>
+          <div class="mx-auto d-flex justify-content-around mb-4" style="width: 60%;">
+            <%= f.radio_button :open, "true" %>
+            <label for="travel_open_true">公　開</label>
+            <%= f.radio_button :open, "false" %>
+            <label for="travel_open_false">非公開</label>
+          </div>
+          <div class="mx-auto mb-3" style="width: 40%;"><%= f.submit "Go",class:"btn btn-info travel-btn"%></div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
