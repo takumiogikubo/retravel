@@ -1,14 +1,28 @@
-
-<% @comments.each do |comment|%>
-  <%= image_tag comment.customer.get_profile_image(100,100) %>
-  <%= comment.customer.account %>
-  <%= comment.review %><br>
-<%end%>
-
-<% if customer_signed_in? %>
-  <%= form_with model: [@travel,@comment] do |f|%>
-  <%= f.text_field :review%>
-  <%= f.submit "コメント"%>
-  <%end%>
-<%end%>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-7 bg-info border-bottom mx-auto">
+      <div class="d-flex flex-column my-2">
+        <div class="d-flex justify-content-center"><%= @travel.travel_start.strftime('%Y/%m/%d')%>〜<%= @travel.travel_finish.strftime('%Y/%m/%d')%></div>
+        <%= link_to travel_path(@travel),class:"mx-auto" do %>
+          <h4 class="mb-0 travel-index-title"><%= @travel.travel_title%></h4>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-7 bg-light mx-auto">
+      <% @comments.each do |comment|%>
+        <%= image_tag comment.customer.get_profile_image(50,50),class:"rounded-circle border" %>
+        <%= comment.customer.account %>
+        <%= comment.review %><br>
+      <%end%>
+      <% if customer_signed_in? %>
+        <%= form_with model: [@travel,@comment] do |f|%>
+        <%= f.text_field :review%>
+        <%= f.submit "コメント"%>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</div>
 

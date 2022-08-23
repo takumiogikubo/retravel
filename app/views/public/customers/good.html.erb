@@ -1,28 +1,50 @@
-<% @good_travels.each do |travel|%>
-  <%= link_to customer_path(travel.customer_id) do %>
-    <%= image_tag travel.customer.get_profile_image(100,100)%>
-  <% end %>
-  <%= travel.customer.account%>
-  <%= travel.travel_start%>
-  <%= travel.travel_finish%>
-  <%= link_to travel_path(travel) do %>
-    <%= travel.travel_title%>
-  <%end%><br>
-    <%= image_tag travel.get_image(300,300)%><br>
 
-    <% if travel.good_by?(current_customer) %>
-    <p>
-      <%= link_to travel_goods_path(travel), method: :delete do %>
-        ♥<%= travel.goods.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to travel_goods_path(travel), method: :post do %>
-        ♡<%= travel.goods.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
-  <%= link_to "コメント",new_travel_comment_path(travel)%><br>
-<%end%>
+<div class="container travel-index">
+  <div class="d-flex flex-wrap">
+    <% @good_travels.reverse.each do |travel|%>
+    <% if travel.open==true%>
+      <div class="card travel-index-card mt-2 mb-2 mx-2 shadow-lg">
+        <%= link_to travel_path(travel) do %>
+          <%= image_tag travel.get_image(300,300),class:"trim"%>
+        <%end%>
+        <div class="d-flex flex-row">
+          <div class="d-flex flex-column mt-2 ml-2">
+            <%= link_to customer_path(travel.customer_id) do %>
+              <%= image_tag travel.customer.get_profile_image(50,50),class:"rounded-circle border"%>
+            <% end %>
+            <div class="mx-auto"><%= travel.customer.account%></div>
+          </div>
+          <div class="d-flex flex-column mx-auto mx-0">
+            <div class="d-flex flex-column travel-index-title">
+              <div><%= travel.travel_start.strftime('%Y/%m/%d')%>〜<%= travel.travel_finish.strftime('%Y/%m/%d')%></div>
+              <%= link_to travel_path(travel),class:"mx-auto" do %>
+                <h4 class="mb-0 travel-index-title"><%= travel.travel_title%></h4>
+              <%end%>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="pr-2">
+                <% if customer_signed_in? %>
+                  <% if travel.good_by?(current_customer) %>
+                    <%= link_to travel_goods_path(travel),class:"travel-show-good-comment_decoration", method: :delete do %>
+                      <p class="travel-index-good-comment mb-0"><span class="travel-show-span">♥</span><%= travel.goods.count %> いいね</p>
+                    <% end %>
+                  <% else %>
+                    <%= link_to travel_goods_path(travel),class:"travel-show-good-comment_decoration", method: :post do %>
+                      <p class="travel-index-good-comment mb-0">♡<%= travel.goods.count %> いいね</p>
+                    <% end %>
+                  <% end %>
+                <%end%>
+              </div>
+              <div class="pl-2">
+                <%= link_to new_travel_comment_path(travel),class:"travel-show-good-comment_decoration" do%>
+                  <p class="travel-index-good-comment mb-0"><i class="far fa-comment"></i>コメント</p>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    <%end%>
+  </div>
+</div>

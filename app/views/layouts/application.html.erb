@@ -12,7 +12,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm border-bottom">
+    <header class="shadow-sm border-bottom sticky-top bg-warning">
     <% if customer_signed_in? %>
       <%= link_to edit_customer_registration_path do%>
         <%= image_tag current_customer.get_profile_image(50,50),class:"rounded-circle" %>
@@ -32,7 +32,7 @@
     <main class="mb-auto">
     <%= yield %>
     </main>
-    <footer class="bg-dark text-white pt-5 pb-4">
+    <footer class="bg-dark text-white pt-5 pb-4 fixed-bottom">
 
     </footer>
   </body>

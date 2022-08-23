@@ -140,7 +140,6 @@
 .travel-show-good-comment{
   color: #888888;
   font-size: 23px;
-
 }
 
 .travel-show-span{
@@ -209,4 +208,28 @@ input[type="radio"]:checked+label{
   font-family: "タイムマシンわ号";
   background: linear-gradient(transparent 50%,rgba(208, 227, 155, 0.2) 50%,rgb(208, 227, 155) 75%,rgba(208, 227, 155, 0.2));
   font-weight: bold;
+}
+
+.travel-index-card{
+  width: 350px;
+}
+
+.travel-index-good-comment{
+  color: #888888;
+  font-size: 20px;
+}
+
+.travel-index-title{
+  width: 100%;
+}
+
+.travel-index-title{
+  color: black;
+}
+
+.trim {
+    overflow: hidden;
+    width: 348px;/* トリミングしたい枠の幅 */
+    height: 250px;/* トリミングしたい枠の高さ */
+    position: relative;
 }
