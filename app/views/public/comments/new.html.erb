@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-7 bg-info border-bottom mx-auto">
+    <div class="col-7 bg-info-comment border-bottom mx-auto">
       <div class="d-flex flex-column my-2">
         <div class="d-flex justify-content-center"><%= @travel.travel_start.strftime('%Y/%m/%d')%>〜<%= @travel.travel_finish.strftime('%Y/%m/%d')%></div>
         <%= link_to travel_path(@travel),class:"mx-auto" do %>
@@ -9,19 +9,31 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row comment-new-row mb-5">
     <div class="col-7 bg-light mx-auto">
-      <% @comments.each do |comment|%>
-        <%= image_tag comment.customer.get_profile_image(50,50),class:"rounded-circle border" %>
-        <%= comment.customer.account %>
-        <%= comment.review %><br>
-      <%end%>
-      <% if customer_signed_in? %>
-        <%= form_with model: [@travel,@comment] do |f|%>
-        <%= f.text_field :review%>
-        <%= f.submit "コメント"%>
+      <div class="mx-auto my-2">
+        <% if customer_signed_in? %>
+          <%= form_with model: [@travel,@comment] do |f|%>
+          <%= f.text_field :review,style: "width:80%"%>
+          <%= f.submit "コメント",style: "width:19%"%>
+          <%end%>
         <%end%>
-      <%end%>
+      </div>
+      <div>
+        <% @comments.each do |comment|%>
+          <div class="my-2">
+            <div class="d-flex flex-row">
+              <div class="d-flex flex-column mt-2 ml-2">
+                <%= link_to customer_path(comment.customer_id) do %>
+                  <%= image_tag comment.customer.get_profile_image(50,50),class:"rounded-circle border"%>
+                <% end %>
+                <div class="mx-auto"><%= comment.customer.account%></div>
+              </div>
+              <div class="balloon-left"><%= comment.review %></div><br>
+            </div>
+          </div>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>
