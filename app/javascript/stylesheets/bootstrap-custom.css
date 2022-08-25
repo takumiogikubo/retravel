@@ -275,5 +275,22 @@ input[type="radio"]:checked+label{
 }
 
 .bg-info-comment{
-  background-color: #97cdf3;
+  background-color: #00a9ff;
+}
+
+.bg-info-follow{
+  background-color: #f0e900;
+}
+
+.follow-row{
+  height: 100%;
+}
+
+.btn-follow{
+  background-color: #1760a0;
+  color: white;
+}
+
+.follow-title{
+  font-family: "ニコカ";
 }

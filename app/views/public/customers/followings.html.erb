@@ -1,5 +1,24 @@
-<% @customers.each do |customer|%>
-<%= image_tag customer.get_profile_image(100,100) %>
-<%= customer.account%>
-<%= render 'public/relationships/follow_button', customer: customer %>
-<%end%>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-5 bg-info-follow border-bottom mx-auto">
+      <div class="d-flex justify-content-center align-items-center py-2"><h1 class="follow-title mb-0">フォロー</h1></div>
+    </div>
+  </div>
+  <div class="row follow-row">
+    <div class="col-5 bg-light mx-auto">
+      <% @customers.each do |customer|%>
+      <div class="d-flex justify-content-between justify-content-center">
+        <div class="d-flex align-items-center justify-content-center mt-2 mb-1">
+          <div class="mr-1">
+            <%= link_to customer_path(customer) do %>
+              <%= image_tag customer.get_profile_image(50,50),class:"rounded-circle border"%>
+            <% end %>
+          </div>
+          <div class="mr-3"><%= customer.account%></div>
+        </div>
+        <div class="d-flex align-items-center mt-2"><%= render 'public/relationships/follow_button', customer: customer %></div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
