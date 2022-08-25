@@ -221,9 +221,6 @@ input[type="radio"]:checked+label{
 
 .travel-index-title{
   width: 100%;
-}
-
-.travel-index-title{
   color: black;
 }
 
@@ -293,4 +290,9 @@ input[type="radio"]:checked+label{
 
 .follow-title{
   font-family: "ニコカ";
+}
+
+.customer-show-self_introduction{
+  width: 25%;
+  height: 100px;
 }
