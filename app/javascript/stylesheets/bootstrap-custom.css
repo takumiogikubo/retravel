@@ -296,3 +296,7 @@ input[type="radio"]:checked+label{
   width: 25%;
   height: 100px;
 }
+
+.avatar-submit{
+  width: 80%;
+}
