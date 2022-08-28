@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'customers/my_page' => 'customers#mypage'
     resources :customers, only:[:create,:show,:edit,:update] do
+        get :search, on: :collection
       member do
         get 'avatar'
         get 'unsubscrib'

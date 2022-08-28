@@ -128,9 +128,10 @@
 
 .travel_detail-show-memo{
   width: 60%;
-  height:4em;
+  height:3em;
   background-color: white;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .travel_detail-show-date{

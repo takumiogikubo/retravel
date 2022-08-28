@@ -1,8 +1,12 @@
 
 <div class="row mt-3">
   <div class="col-3 pl-5">
-    <%= link_to bestshot_travel_path(@travel)do%>
-    <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+    <% if @travel.customer.id == current_customer.id %>
+      <%= link_to bestshot_travel_path(@travel)do%>
+        <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+      <%end%>
+    <%else%>
+      <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
     <%end%>
   </div>
   <div class="col-6 mt-3">
@@ -68,10 +72,10 @@
               <h5 class="mb-0"><%= travel_detail.start_time.strftime("%H時%M分")%></h5><p class="mb-0">〜</p><h5 class="mb-0 pr-3"><%= travel_detail.finish_time.strftime("%H時%M分")%></h5>
             </div>
           </td>
-          <td class="py-1" style="width:70%">
+          <td class="py-1 align-middle" style="width:70%">
             <div class="d-flex align-items-center ml-3">
               <h4 class="mb-0 travel_detail-show-title"><%= travel_detail.travel_title_detail%></h4>
-              <div class="mb-0 border travel_detail-show-memo d-flex align-items-center pl-2" style="line-height: 1.5;"><%= safe_join(travel_detail.memo.split("\n"),tag(:br))%></div>
+              <div class="mb-0 border travel_detail-show-memo pl-2" style="line-height: 1.5;"><%= safe_join(travel_detail.memo.split("\n"),tag(:br))%></div>
               <% if customer_signed_in? %>
                 <% if @travel.customer.id == current_customer.id %>
                   <div class="d-flex flex-column bd-highlight ml-2">
@@ -84,7 +88,7 @@
                   </div>
                 <%end%>
               <%end%>
-          </div>
+            </div>
           </td>
         </tr>
       <%end%>

@@ -67,6 +67,14 @@ class Public::CustomersController < ApplicationController
     @good_travels=Travel.find(goods)
   end
 
+  def search
+    if params[:account].present?
+      @customers = Customer.where('account LIKE ?', "%#{params[:account]}%")
+    else
+      @customers = Customer.none
+    end
+  end
+
 
   private
 
