@@ -57,8 +57,10 @@
                 <%end%>
               </div>
               <div class="pl-2">
-                <%= link_to new_travel_comment_path(travel),class:"travel-show-good-comment_decoration" do%>
-                  <p class="travel-index-good-comment mb-0"><i class="far fa-comment"></i>コメント</p>
+                <% if customer_signed_in? %>
+                  <%= link_to new_travel_comment_path(travel),class:"travel-show-good-comment_decoration" do%>
+                    <p class="travel-index-good-comment mb-0"><i class="far fa-comment"></i>コメント</p>
+                  <%end%>
                 <%end%>
               </div>
             </div>
