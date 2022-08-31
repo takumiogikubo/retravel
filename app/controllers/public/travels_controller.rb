@@ -19,9 +19,12 @@ class Public::TravelsController < ApplicationController
   def create
     travel = Travel.new(travel_params)
     travel.customer_id = current_customer.id
-    travel.save
+    if  travel.save
     # current_customer.travel_details.destroy_all
-    redirect_to customers_my_page_path
+      redirect_to customers_my_page_path
+    else
+      redirect_to new_travel_path
+    end
   end
 
   def bestshot

@@ -1,12 +1,14 @@
 
 <div class="row mt-3">
   <div class="col-3 pl-5">
-    <% if @travel.customer.id == current_customer.id %>
-      <%= link_to bestshot_travel_path(@travel)do%>
-        <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+    <% if customer_signed_in?%>
+      <% if @travel.customer.id == current_customer.id %>
+        <%= link_to bestshot_travel_path(@travel)do%>
+          <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+        <%end%>
       <%end%>
     <%else%>
-      <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+        <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
     <%end%>
   </div>
   <div class="col-6 mt-3">

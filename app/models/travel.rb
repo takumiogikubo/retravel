@@ -7,9 +7,22 @@ class Travel < ApplicationRecord
 
   has_one_attached :image
 
+  validates :travel_start, presence: true
+  validates :travel_finish, presence: true
+  validates :travel_title, presence: true
+  validates :destination, presence: true
+  validate :start_finish_check
+
+  def start_finish_check
+    errors.add(:travel_finish,"の日付を正しく記入してください。")unless
+    unless travel_start == nil or travel_finish == nil
+    self.travel_start <= self.travel_finish
+    end
+  end
+
   def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/sample.jpg')
+      file_path = Rails.root.join('app/assets/images/summer.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed

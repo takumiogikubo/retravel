@@ -10,7 +10,7 @@
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= render "public/shared/error_messages", resource: resource %>
               <%= f.text_field :name,style: "width:100%", autofocus: true, autocomplete: "name", placeholder: "名前を入力",class:"mb-2"%><br>
-              <%= f.text_field :account,style: "width:100%", autofocus: true, autocomplete: "account", placeholder: "アカウント名を入力",class:"mb-2"%><br>
+              <%= f.text_field :account,style: "width:100%", autofocus: true, autocomplete: "account", placeholder: "アカウント名を入力（７文字以内）", maxlength: "7",class:"mb-2"%><br>
               <%= f.email_field :email,style: "width:100%", autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力",class:"mb-2"%><br>
               <%= f.password_field :password,style: "width:100%", autocomplete: "new-password", placeholder: "パスワードを入力（６文字以上）",class:"mb-2"%><br>
               <%= f.password_field :password_confirmation,style: "width:100%", autocomplete: "new-password", placeholder: "確認用のパスワードを入力",class:"mb-2"%><br>

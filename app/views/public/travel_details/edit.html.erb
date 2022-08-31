@@ -5,7 +5,7 @@
         <h1 class="travel-detail-edit mb-3">schedule edit</h1>
         <%= form_with model: [@travel,@travel_detail] do |f|%>
         <h3 class="mx-auto mb-3" style="width:60%"><%= f.date_field :travel_date,style: "width:100%" %></h3>
-        <div class="mx-auto mb-3" style="width: 60%;"><%= f.text_field :travel_title_detail,class:"input-travel-title-detail",style: "width:100%", placeholder: "タイトルを入力"%></div>
+        <div class="mx-auto mb-3" style="width: 60%;"><%= f.text_field :travel_title_detail,class:"input-travel-title-detail",style: "width:100%", placeholder: "タイトルを入力", maxlength: ""%></div>
         <h2 class="mx-auto d-flex justify-content-around mb-3" style="width:90%"><%= f.time_field :start_time%>から<%= f.time_field :finish_time%></h2>
         <p class="mb-0">〜 memo 〜</p>
         <div class="mb-4"><%= f.text_area :memo,cols:"54%",  rows: 2 %></div>

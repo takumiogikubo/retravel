@@ -3,10 +3,10 @@ class CreateTravelDetails < ActiveRecord::Migration[6.1]
     create_table :travel_details do |t|
 
       t.references :travel,foreign_key:true
-      t.date :travel_date,null: false, default: ""
+      t.date :travel_date,null: false, default: -> { '(CURRENT_DATE)' }
       t.string :travel_title_detail,null: false, default: ""
-      t.time :start_time,null: false, default: ""
-      t.time :finish_time,null: false, default: ""
+      t.time :start_time,null: false
+      t.time :finish_time,null: false
       t.text :memo
 
       t.timestamps

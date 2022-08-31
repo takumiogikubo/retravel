@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-7 bg-info-comment border-bottom mx-auto">
       <div class="d-flex flex-column my-2">
-        <div class="d-flex justify-content-center"><%= @travel.travel_start.strftime('%Y/%m/%d')%>〜<%= @travel.travel_finish.strftime('%Y/%m/%d')%></div>
+        <div class="d-flex justify-content-center text-white"><%= @travel.travel_start.strftime('%Y/%m/%d')%>〜<%= @travel.travel_finish.strftime('%Y/%m/%d')%></div>
         <%= link_to travel_path(@travel),class:"mx-auto" do %>
-          <h4 class="mb-0 travel-index-title"><%= @travel.travel_title%></h4>
+          <h3 class="mb-0 travel-index-title text-white"><strong><%= @travel.travel_title%></strong></h3>
         <%end%>
       </div>
     </div>
@@ -23,11 +23,13 @@
         <% @comments.each do |comment|%>
           <div class="my-2">
             <div class="d-flex flex-row">
-              <div class="d-flex flex-column mt-2 ml-2">
-                <%= link_to customer_path(comment.customer_id) do %>
-                  <%= image_tag comment.customer.get_profile_image(50,50),class:"rounded-circle border"%>
-                <% end %>
-                <div class="mx-auto"><%= comment.customer.account%></div>
+              <div class="d-flex align-items-center">
+                <div class="d-flex flex-column mt-2 ml-2">
+                  <%= link_to customer_path(comment.customer_id) do %>
+                    <%= image_tag comment.customer.get_profile_image(50,50),class:"rounded-circle border"%>
+                  <% end %>
+                  <div class="mx-auto"><%= comment.customer.account%></div>
+                </div>
               </div>
               <div class="balloon-left"><%= comment.review %></div><br>
             </div>
