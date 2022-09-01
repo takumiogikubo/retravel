@@ -16,10 +16,9 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, presence: true
-  validates :account, presence: true
+  validates :account, presence: true, uniqueness: true
   validates :email, presence: true
   validates :encrypted_password, presence: true
-
 
   def get_profile_image(width,height)
     unless profile_image.attached?

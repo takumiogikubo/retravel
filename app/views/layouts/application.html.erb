@@ -13,7 +13,15 @@
 
   <body class="d-flex flex-column">
     <header class="shadow-sm border-bottom border-dark sticky-top bg-dark d-flex align-items-center justify-content-between">
-    <% if customer_signed_in? %>
+
+    <% if admin_signed_in? %>
+      <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete,class:"header-logout ml-2"%>
+      <diV><a class=hp-title href="/admin">Re.Travel</a></diV>
+      <div>
+        <%= link_to "ユーザー一覧",admin_root_path,class:"header-logout mr-2"%>
+        <%= link_to "投稿一覧",admin_travels_path,class:"header-logout mr-2"%>
+      </div>
+    <% elsif customer_signed_in? %>
       <div>
         <%= link_to edit_customer_registration_path do%>
           <%= image_tag current_customer.get_profile_image(50,50),class:"rounded-circle mr-3 ml-2" %>
@@ -33,7 +41,6 @@
           <i class="fas fa-search fa-2x fas-font-color"></i>
         <%end%>
       </diV>
-
     <% else %>
       <div>
         <%= image_tag 'no_image', size: "50x50",class:"rounded-circle mr-3 ml-2" %>

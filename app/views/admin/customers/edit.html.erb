@@ -1,41 +1,42 @@
-
-<%= image_tag @customer.get_profile_image(100,100) %>
-
-<%= form_with model:[:admin,@customer] do |f|%>
-
-<div class="field">
-  <%= "会員ID" %>
-  <%= @customer.id%>
+<div class="container">
+  <div class="row">
+    <div class="col-5 mt-4">
+      <%= image_tag @customer.get_profile_image(300,300),class:"rounded-circle float-right border" %>
+    </div>
+    <div class="col-7 pl-5">
+      <%= form_with model:[:admin,@customer] do |f|%>
+      <table class="mt-5">
+        <tr>
+          <th style="width: 50%">会員ID</th>
+          <td><%= @customer.id%></td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= f.text_field :name, autofocus: true, autocomplete: "name"  %></td>
+        </tr>
+        <tr>
+          <th>アカウント名</th>
+          <td><%= f.text_field :account, autofocus: true, autocomplete: "account"  %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td>
+            <%= f.radio_button :is_active,"false"%>
+            <%= f.label :is_active,"有効",value:"false"%>
+            <%= f.radio_button :is_active,"true"%>
+            <%= f.label :is_active,"退会",value:"true"%>
+          </td>
+        </tr>
+      </table>
+      <div class="d-flex mt-3 mb-3">
+        <div class="border admin_customer-show-self_introduction rounded"><%= @customer.self_introduction%></div>
+      </div>
+    </div>
+  </div>
+    <div class="d-flex justify-content-center mt-5"><%= f.submit '変更を保存',class:"btn btn-info btn-sm admin_customer-show-submit"%></div>
+  <% end %>
 </div>
-
-<div class="field">
-  <%= f.label :名前 %>
-  <%= f.text_field :name, autofocus: true, autocomplete: "name"  %>
-</div>
-
-<div class="field">
-  <%= f.label :アカウント名 %>
-  <%= f.text_field :account, autofocus: true, autocomplete: "account"  %>
-</div>
-
-<div class="field">
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-</div>
-
-<div class="field">
-  <%= f.label :ステータス%>
-  <%= f.radio_button :is_active,"false"%>
-  <%= f.label :is_active,"有効",value:"false"%>
-  <%= f.radio_button :is_active,"true"%>
-  <%= f.label :is_active,"退会",value:"true"%>
-</div>
-
-<div class="field">
-  <%= "自己紹介文" %><br />
-  <%= @customer.self_introduction%>
-</div>
-
-<%= f.submit '変更を保存'%>
-
-<% end %>

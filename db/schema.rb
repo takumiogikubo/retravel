@@ -52,11 +52,6 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "bestshots", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "travel_id"
@@ -81,16 +76,6 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "relationship_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id", "relationship_id"], name: "index_follows_on_customer_id_and_relationship_id", unique: true
-    t.index ["customer_id"], name: "index_follows_on_customer_id"
-    t.index ["relationship_id"], name: "index_follows_on_relationship_id"
   end
 
   create_table "goods", force: :cascade do |t|
@@ -142,8 +127,6 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "customers"
   add_foreign_key "comments", "travels"
-  add_foreign_key "follows", "customers"
-  add_foreign_key "follows", "customers", column: "relationship_id"
   add_foreign_key "goods", "customers"
   add_foreign_key "goods", "travels"
   add_foreign_key "relationships", "customers"

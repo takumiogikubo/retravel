@@ -1,0 +1,57 @@
+<div class="row mt-3">
+  <div class="col-3 pl-5">
+    <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
+  </div>
+  <div class="col-6 mt-3">
+    <div class="d-flex align-items-center justify-content-center">
+      <h4 class="mb-0 border px-3"><%= @travel.travel_start.strftime('%Y年%m月%d日')%></h4><p class="mb-0">から</p><h4 class="mb-0 border px-3"><%= @travel.travel_finish.strftime('%Y年%m月%d日')%></h4>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <h5>〜<%= @travel.destination_i18n %>〜</h5>
+    </div>
+    <div class="mx-auto border travel-show-title">
+      <h1 class="d-flex justify-content-center mb-0"><%= @travel.travel_title%></h1>
+    </div>
+  </div>
+  <div class="col-3 d-flex justify-content-end pr-5">
+    <div class="d-flex flex-row">
+      <%= link_to admin_customer_path(@travel.customer_id) do %>
+        <%= image_tag @travel.customer.get_profile_image(60,60),class:"rounded-circle float-right border"%>
+      <% end %>
+      <div>
+        <p class="ml-2 mt-2 mb-0 border-bottom"><%= @travel.customer.account%></p>
+        <p>　の旅行</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <table class="table table-striped travel-show-table">
+      <% @travel_details.each do |travel_detail|%>
+        <tr>
+          <td class="travel-show-border py-1">
+            <div class="d-flex align-items-center justify-content-center travel_detail-show-date">
+              <p class="mb-0 pr-3"><%= travel_detail.travel_date.strftime('%m月%d日')%></p>
+              <h5 class="mb-0"><%= travel_detail.start_time.strftime("%H時%M分")%></h5><p class="mb-0">〜</p><h5 class="mb-0 pr-3"><%= travel_detail.finish_time.strftime("%H時%M分")%></h5>
+            </div>
+          </td>
+          <td class="py-1 align-middle" style="width:70%">
+            <div class="d-flex align-items-center ml-3">
+              <h4 class="mb-0 travel_detail-show-title"><%= travel_detail.travel_title_detail%></h4>
+              <div class="mb-0 border travel_detail-show-memo pl-2" style="line-height: 1.5;"><%= safe_join(travel_detail.memo.split("\n"),tag(:br))%></div>
+            </div>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+</div>
+<div class="d-flex justify-content-center ">
+  <%= link_to admin_travel_path(@travel),method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+    <i class="fas fa-trash-alt fa-4x"></i>
+  <%end%>
+</div>
+
+

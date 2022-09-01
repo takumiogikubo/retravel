@@ -1,25 +1,31 @@
 
-<table>
+<table class="table">
   <tr>
-    <th>会員ID</th>
-    <th>プロフィール写真</th>
-    <th>名前</th>
-    <th>アカウント名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
+    <th class="text-center">会員ID</th>
+    <th class="text-center">プロフィール写真</th>
+    <th class="text-center">名前</th>
+    <th class="text-center">アカウント名</th>
+    <th class="text-center">メールアドレス</th>
+    <th class="text-center">ステータス</th>
   </tr>
 <% @customers.each do |customer| %>
   <tr>
-    <td><%= customer.id %></td>
-    <td>
+    <td class="align-middle text-center"><%= customer.id %></td>
+    <td class="align-middle text-center">
       <%= link_to admin_customer_path(customer.id) do %>
-        <%= image_tag customer.get_profile_image(100,100) %>
+        <%= image_tag customer.get_profile_image(70,70),class:"rounded-circle border" %>
       <% end %>
     </td>
-    <td><%= customer.name %></td>
-    <td><%= customer.account %></td>
-    <td><%= customer.email %></td>
-    <td><%= customer.is_active %></td>
+    <td class="align-middle text-center"><%= customer.name %></td>
+    <td class="align-middle text-center"><%= customer.account %></td>
+    <td class="align-middle text-center"><%= customer.email %></td>
+    <td class="align-middle text-center">
+      <% if customer.is_active %>
+        <p class="text-secondary mb-0"><strong>退会済</strong></p>
+      <% else %>
+        <p class="text-success mb-0"><strong>有効</strong></p>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
