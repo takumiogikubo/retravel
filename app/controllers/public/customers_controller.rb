@@ -37,8 +37,12 @@ class Public::CustomersController < ApplicationController
 
   def update
     customer=Customer.find(current_customer.id)
-    customer.update(customer_params)
-    redirect_back fallback_location: root_path
+    unless params[:customer]
+      redirect_back fallback_location: root_path
+    else
+      customer.update(customer_params)
+      redirect_back fallback_location: root_path
+    end
   end
 
   def unsubscrib

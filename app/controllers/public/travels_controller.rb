@@ -1,8 +1,14 @@
 class Public::TravelsController < ApplicationController
 
   def index
-    @travels=Travel.where(open:true)
+    if params[:travel_title].present?
+      @travels = Travel.where('travel_title LIKE ?', "%#{params[:travel_title]}%").where(open:true)
+    else
+      @travels=Travel.where(open:true)
+    end
   end
+
+
 
   def show
     @travel = Travel.find(params[:id])
@@ -32,10 +38,14 @@ class Public::TravelsController < ApplicationController
   end
 
   def imageupdate
-
     travel = Travel.find(params[:id])
-    travel.update(travel_params)
-    redirect_back fallback_location: root_path
+    unless params[:travel]
+
+      redirect_back fallback_location: root_path
+    else
+      travel.update(travel_params)
+      redirect_back fallback_location: root_path
+    end
   end
 
 
@@ -56,10 +66,16 @@ class Public::TravelsController < ApplicationController
     redirect_to  customers_my_page_path
   end
 
+  def search
+
+  end
+
   private
 
   def travel_params
     params.require(:travel).permit(:image,:travel_detail_id,:travel_start,:travel_finish,:travel_title,:destination,:open)
   end
+
+
 
 end

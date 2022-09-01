@@ -1,3 +1,12 @@
+<div class="d-flex justify-content-center align-items-center py-2"><h3 class="follow-title mb-0">旅行検索</h3></div>
+<div class="d-flex justify-content-center align-items-center pb-2">
+  <%= form_with url: root_path, method: :get, local: true do |f| %>
+    <%= f.text_field :travel_title, placeholder: "旅行のタイトルで検索" %>
+    <%= f.submit :search %>
+  <% end %>
+</div>
+
+
 <div class="container travel-index">
   <div class="d-flex flex-wrap">
     <% @travels.reverse.each do |travel|%>
