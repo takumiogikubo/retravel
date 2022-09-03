@@ -4,8 +4,8 @@ class CreateTravels < ActiveRecord::Migration[6.1]
 
       t.references :customer,foreign_key:true
       t.references :travel_detail,foreign_key:true
-      t.date :travel_start,null: false, default:  -> { '(CURRENT_DATE)' }
-      t.date :travel_finish,null: false, default:  -> { '(CURRENT_DATE)' }
+      t.date :travel_start,null: false
+      t.date :travel_finish,null: false
       t.string :travel_title,null: false, default: ""
       t.integer :destination,null: false, default: ""
       t.boolean :open, null: false, default: false
