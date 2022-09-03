@@ -2,8 +2,8 @@ class CreateTravels < ActiveRecord::Migration[6.1]
   def change
     create_table :travels do |t|
 
-      t.references :customer,foreign_key:true
-      t.references :travel_detail,foreign_key:true
+      t.references :customer, type: :bigint,foreign_key:true
+      t.references :travel_detail, type: :bigint,foreign_key:true
       t.date :travel_start,null: false
       t.date :travel_finish,null: false
       t.string :travel_title,null: false, default: ""

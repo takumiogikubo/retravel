@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.integer "travel_id"
     t.string "review", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "goods", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "travel_id"
+    t.bigint "customer_id"
+    t.bigint "travel_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_goods_on_customer_id"
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "follow_id"
+    t.bigint "customer_id"
+    t.bigint "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "travel_details", force: :cascade do |t|
-    t.integer "travel_id"
+    t.bigint "travel_id"
     t.date "travel_date", null: false
     t.string "travel_title_detail", default: "", null: false
     t.time "start_time", null: false
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "travels", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "travel_detail_id"
+    t.bigint "customer_id"
+    t.bigint "travel_detail_id"
     t.date "travel_start", null: false
     t.date "travel_finish", null: false
     t.string "travel_title", default: "", null: false
