@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
     t.date "travel_start", null: false
     t.date "travel_finish", null: false
     t.string "travel_title", default: "", null: false
-    t.integer "destination", null: false
+    t.integer "destination", default: 13, null: false
     t.boolean "open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
