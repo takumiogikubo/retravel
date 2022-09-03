@@ -9,7 +9,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :account,null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.text :self_introduction, default: ""
+      t.text :self_introduction
       t.boolean :is_active,null: false, default: false
 
       ## Recoverable
