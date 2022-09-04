@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "customer_id"
-    t.bigint "travel"
+    t.bigint "travel_id"
     t.string "review", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
