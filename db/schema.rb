@@ -85,10 +85,10 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
 
   create_table "relationships", force: :cascade do |t|
     t.bigint "customer_id"
-    t.bigint "follow"
+    t.bigint "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"customer_id\", \"follow_id\"", name: "index_relationships_on_customer_id_and_follow_id", unique: true
+    t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
   end
 
   create_table "travel_details", force: :cascade do |t|
