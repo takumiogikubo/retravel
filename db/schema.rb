@@ -53,13 +53,11 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.integer "travel_id"
+    t.bigint "customer"
+    t.bigint "travel"
     t.string "review", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_comments_on_customer_id"
-    t.index ["travel_id"], name: "index_comments_on_travel_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -79,26 +77,22 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
   end
 
   create_table "goods", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "travel_id"
+    t.bigint "customer"
+    t.bigint "travel"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_goods_on_customer_id"
-    t.index ["travel_id"], name: "index_goods_on_travel_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "follow_id"
+    t.bigint "customer"
+    t.bigint "follow"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
-    t.index ["customer_id"], name: "index_relationships_on_customer_id"
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index "\"customer_id\", \"follow_id\"", name: "index_relationships_on_customer_id_and_follow_id", unique: true
   end
 
   create_table "travel_details", force: :cascade do |t|
-    t.bigint "travel_id"
+    t.bigint "travel"
     t.date "travel_date", null: false
     t.string "travel_title_detail", default: "", null: false
     t.time "start_time", null: false
@@ -106,12 +100,11 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["travel_id"], name: "index_travel_details_on_travel_id"
   end
 
   create_table "travels", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "travel_detail_id"
+    t.bigint "customer"
+    t.bigint "travel_detail"
     t.date "travel_start", null: false
     t.date "travel_finish", null: false
     t.string "travel_title", default: "", null: false
@@ -119,19 +112,8 @@ ActiveRecord::Schema.define(version: 2022_08_05_115638) do
     t.boolean "open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_travels_on_customer_id"
-    t.index ["travel_detail_id"], name: "index_travels_on_travel_detail_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "customers"
-  add_foreign_key "comments", "travels"
-  add_foreign_key "goods", "customers"
-  add_foreign_key "goods", "travels"
-  add_foreign_key "relationships", "customers"
-  add_foreign_key "relationships", "customers", column: "follow_id"
-  add_foreign_key "travel_details", "travels"
-  add_foreign_key "travels", "customers"
-  add_foreign_key "travels", "travel_details"
 end

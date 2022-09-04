@@ -2,12 +2,12 @@ class CreateTravels < ActiveRecord::Migration[6.1]
   def change
     create_table :travels do |t|
 
-      t.references :customer, type: :bigint,foreign_key:true
-      t.references :travel_detail, type: :bigint,foreign_key:true
-      t.date :travel_start,null: false
-      t.date :travel_finish,null: false
-      t.string :travel_title,null: false, default: ""
-      t.integer :destination,null: false, default: "13"
+      t.bigint :customer, foreign_key: true
+      t.bigint :travel_detail, foreign_key: true
+      t.date :travel_start, null: false
+      t.date :travel_finish, null: false
+      t.string :travel_title, null: false, default: ""
+      t.integer :destination, null: false, default: "13"
       t.boolean :open, null: false, default: false
 
       t.timestamps
