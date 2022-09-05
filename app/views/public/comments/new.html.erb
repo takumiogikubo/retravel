@@ -34,8 +34,10 @@
                 </div>
                 <div class="balloon-right">
                   <%= comment.review %>
-                  <%= link_to travel_comment_path(@travel,comment),method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                    <i class="fas fa-times-circle"></i>
+                  <%if comment.customer == current_customer%>
+                    <%= link_to travel_comment_path(@travel,comment),method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                      <i class="fas fa-times-circle"></i>
+                    <%end%>
                   <%end%>
                 </div><br>
               </div>
@@ -51,8 +53,10 @@
                 </div>
                 <div class="balloon-left">
                   <%= comment.review %>
-                  <%= link_to travel_comment_path(@travel,comment),method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                    <i class="fas fa-times-circle"></i>
+                  <%if comment.customer == current_customer%>
+                    <%= link_to travel_comment_path(@travel,comment),method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                      <i class="fas fa-times-circle"></i>
+                    <%end%>
                   <%end%>
                 </div><br>
               </div>
