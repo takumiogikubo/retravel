@@ -16,6 +16,9 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    comment=Comment.find(params[:id])
+    comment.destroy
+    redirect_to new_travel_comment_path
   end
 
   private
