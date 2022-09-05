@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
   def new
     @travel=Travel.find(params[:travel_id])
     @comment=@travel.comments.build
-    @comments=@travel.comments
+    @comments=@travel.comments.all
   end
 
   def create
