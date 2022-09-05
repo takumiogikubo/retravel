@@ -6,6 +6,8 @@
         <%= link_to bestshot_travel_path(@travel)do%>
           <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
         <%end%>
+      <%else%>
+        <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
       <%end%>
     <%else%>
         <%= image_tag @travel.get_image(300,200),class:"pl-5"%>
