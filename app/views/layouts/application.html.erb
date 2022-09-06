@@ -30,15 +30,15 @@
         <%= link_to "退会する", unsubscrib_customer_path(current_customer.id),class:"header-withdrawal"%>
       </div>
       <diV><a class=hp-title href="/">Re.Travel</a></diV>
-      <diV class="header-fas d-flex flex-row mr-2">
+      <diV class="header-fas d-flex flex-row">
         <%= link_to customers_my_page_path do%>
-          <p class="header-link-text mr-4 mb-0"><i class="fas fa-user fa-3x fas-font-color"></i>プランを考える</p>
+          <p class="header-link-text mr-4 mb-0 text-center"><i class="fas fa-user fa-2x fas-font-color"></i><br>マイプラン</p>
         <%end%>
         <%= link_to root_path do%>
-          <p class="header-link-text mr-4 mb-0"><i class="fas fa-users fa-3x fas-font-color"></i>みんなのプランを見る</p>
+          <p class="header-link-text mr-4 mb-0 text-center"><i class="fas fa-users fa-2x fas-font-color"></i><br>みんなのプラン</p>
         <%end%>
         <%=link_to search_customers_path do%>
-          <p class="header-link-text mr-4 mb-0"><i class="fas fa-search fa-3x fas-font-color"></i>ユーザーを見つける</p>
+          <p class="header-link-text mr-4 mb-0 text-center"><i class="fas fa-search fa-2x fas-font-color"></i><br>ユーザーをさがす</p>
         <%end%>
       </diV>
     <% else %>
@@ -50,10 +50,10 @@
       <diV><a class=hp-title href="/">Re.Travel</a></diV>
       <div class="header-fas d-flex justify-content-end">
         <%= link_to root_path do%>
-          <p class="header-link-text mr-4 mb-0"><i class="fas fa-users fa-3x fas-font-color"></i>みんなのプランを見る</p>
+          <p class="header-link-text mr-4 mb-0 text-center"><i class="fas fa-users fa-2x fas-font-color"></i><br>みんなのプラン</p>
         <%end%>
         <%=link_to search_customers_path do%>
-          <p class="header-link-text mr-4 mb-0"><i class="fas fa-search fa-3x fas-font-color"></i>ユーザーを見つける</p>
+          <p class="header-link-text mr-4 mb-0 text-center"><i class="fas fa-search fa-2x fas-font-color"></i><br>ユーザーをさがす</p>
         <%end%>
       </div>
     <% end %>
