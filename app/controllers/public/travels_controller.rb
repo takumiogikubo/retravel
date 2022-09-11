@@ -51,6 +51,9 @@ class Public::TravelsController < ApplicationController
 
   def edit
     @travel = Travel.find(params[:id])
+    if @travel.customer != current_customer
+      redirect_to travel_path(@travel)
+    end
     # @travel_details=current_customer.travel_details.all
   end
 

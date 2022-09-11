@@ -1,24 +1,43 @@
-# README
+# <ReTravel>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+このサイトで旅行計画を立ててもらい、
+その計画した旅行を共有し、旅行プランを他の人に再利用してもらうことを目的とした
+旅行時のToDo機能と旅行計画の共有を掛け合わせたSNSサイトです。
 
-Things you may want to cover:
 
-* Ruby version
+### テーマを選んだ理由
+新型コロナウイルス感染拡大は、日常でのマスク着用の定着や急速なテレワークの普及など
+私たちの生活へ大きな影響を与えました。
+特に外出時の行動制限は、とても辛い思いをされた方が多くいらっしゃったのではないでしょうか？
+そんな中、2022年2月に（株）レビューが運営する暮らしに役立つ情報メディア「さぶろぐ（https://sublogg.com）」から
+『コロナが収束したらやりたいこと』を男女150人にアンケートをとった結果が発表され
+1位が『国内旅行』、2位が『海外旅行』となっており、3位の『マスクなしでの外出する』とは、なんと2倍以上の差をつけていました。
+この結果から、間違いなく『旅行需要』はあるということを確信しました。
+しかし、コロナがいつ収束するか分からず、いつ旅行に行けるか分からない今
+本当に求めらてるのは、コロナが収束や減少したタイミングですぐにでも旅行に行けるように
+ベストな旅行プランを簡単に見つけたりストックすることができることではないかと考え、その手助けをする手段として、
+このサービスを選択しました。
 
-* System dependencies
 
-* Configuration
+### ターゲットユーザ
+- 旅行計画を立てるのが好きな方
+- 旅行は好きだけど計画を立てるのが苦手な方
+- 滅多に旅行に行かないけど、いざ行くとなると絶対に失敗したくない方
+- 自分のプランを人に紹介したい方
+- 急遽旅行が中止になって、計画した旅行が実行できなかった方
 
-* Database creation
 
-* Database initialization
+### 主な利用シーン
+- 旅行計画をする時
+- 旅行をしている時
+- 旅行の思い出を語り合う時
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
