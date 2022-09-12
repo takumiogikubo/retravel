@@ -3,6 +3,9 @@ class Public::TravelDetailsController < ApplicationController
   def new
     @travel=Travel.find(params[:travel_id])
     @travel_detail=@travel.travel_details.build
+    if @travel.customer != current_customer
+      redirect_to travel_path(@travel)
+    end
   end
 
   def create
@@ -20,6 +23,9 @@ class Public::TravelDetailsController < ApplicationController
   def edit
     @travel=Travel.find(params[:travel_id])
     @travel_detail=@travel.travel_details.find(params[:id])
+    if @travel.customer != current_customer
+      redirect_to travel_path(@travel)
+    end
   end
 
   def update
@@ -36,9 +42,13 @@ class Public::TravelDetailsController < ApplicationController
   def destroy
     travel=Travel.find(params[:travel_id])
     travel_detail = travel.travel_details.find(params[:id])
-    travel_detail.destroy
-    travel=Travel.find(params[:travel_id])
-    redirect_to travel_path(travel.id)
+    if @travel.customer != current_customer
+      redirect_to travel_path(travel.id)
+    else
+      travel_detail.destroy
+      travel=Travel.find(params[:travel_id])
+      redirect_to travel_path(travel.id)
+    end
   end
 
   private

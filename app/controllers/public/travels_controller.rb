@@ -15,6 +15,13 @@ class Public::TravelsController < ApplicationController
     # @travel_details=@travel.travel_details.where(travel_id:params[:id])
     @travel_details=@travel.travel_details.order("travel_date").order("start_time")
     # @comments=@travel.comments.where(travel_id:params[:id])
+    
+    if @travel.customer != current_customer
+      unless @travel.open
+        redirect_to root_path
+      end
+    end
+    
   end
 
   def new
@@ -35,6 +42,10 @@ class Public::TravelsController < ApplicationController
 
   def bestshot
     @travel = Travel.find(params[:id])
+    if @travel.customer != current_customer
+     redirect_to travel_path(@travel)
+    end
+
   end
 
   def imageupdate
@@ -65,8 +76,12 @@ class Public::TravelsController < ApplicationController
 
   def destroy
     travel = Travel.find(params[:id])
-    travel.destroy
-    redirect_to  customers_my_page_path
+    if @travel.customer != current_customer
+      redirect_to travel_path(@travel)
+    else
+      travel.destroy
+      redirect_to  customers_my_page_path
+    end
   end
 
   def search
