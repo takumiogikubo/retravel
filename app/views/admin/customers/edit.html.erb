@@ -32,11 +32,11 @@
           </td>
         </tr>
       </table>
+      <div class="mt-1"><%= f.submit '変更を保存',class:"btn btn-info btn-sm admin_customer-show-submit"%></div>
       <div class="d-flex mt-3 mb-3">
         <div class="border admin_customer-show-self_introduction rounded"><%= @customer.self_introduction%></div>
       </div>
     </div>
   </div>
-    <div class="d-flex justify-content-center mt-5"><%= f.submit '変更を保存',class:"btn btn-info btn-sm admin_customer-show-submit"%></div>
   <% end %>
 </div>
