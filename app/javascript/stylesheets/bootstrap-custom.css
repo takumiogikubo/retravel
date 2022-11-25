@@ -206,8 +206,54 @@ input[type="radio"]:checked+label{
   font-weight: bold;
 }
 
+.sidebar-font{
+  font-family: "ニコカ";
+  color: white;
+}
+
+.sidebar-link-font{
+  color: #778899;
+}
+
+.header-hokkai{background-color: #6A5ACD;}
+.body-hokkai{background-color: #EAD9FF;}
+.header-tohoku{background-color: #6495ED;}
+.body-tohoku{background-color: #D9E5FF;}
+.header-kanto{background-color: #00CC99;}
+.body-kanto{background-color: #CCFFCC;}
+.header-tyubu{background-color: #ADFF2F;}
+.body-tyubu{background-color: #EDFFBE;}
+.header-kinki{background-color: #FFD700;}
+.body-kinki{background-color: #FFFFCC;}
+.header-tyugoku{background-color: #FFAD90;}
+.body-tyugoku{background-color: #FFDBC9;}
+.header-shikoku{background-color: #FFABCE;}
+.body-shikoku{background-color: #FFD5EC;}
+.header-kyusyu{background-color: #FF0033;}
+.body-kyusyu{background-color: #FFC0CB;}
+.header-kaigai{background-color: #D2B48C;}
+.body-kaigai{background-color: #FAF0E6;}
+
+.sidebar-link-font{
+  font-weight: 900;
+}
+
+.overflow-auto{
+  height: 70vh;
+}
+
+.card-body li{
+  list-style: none;
+}
+
+
+.travel-index{
+  width: 100%;
+}
+
 .travel-index-card{
   width: 350px;
+  height: 286px;
 }
 
 .travel-index-good-comment{
@@ -223,7 +269,7 @@ input[type="radio"]:checked+label{
 .trim {
     overflow: hidden;
     width: 348px;/* トリミングしたい枠の幅 */
-    height: 250px;/* トリミングしたい枠の高さ */
+    height: 200px;/* トリミングしたい枠の高さ */
     position: relative;
 }
 

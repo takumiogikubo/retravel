@@ -2,26 +2,32 @@ class Public::TravelsController < ApplicationController
 
   def index
     if params[:travel_title].present?
-      @travels = Travel.where('travel_title LIKE ?', "%#{params[:travel_title]}%").where(open:true)
+      if params[:destination].present?
+        @travels = Travel.where("travel_title LIKE ? ", "%#{params[:travel_title]}%").where(destination:"#{params[:destination]}").where(open:true)
+      else
+        @travels = Travel.where("travel_title LIKE ? ", "%#{params[:travel_title]}%").where(open:true)
+      end
     else
-      @travels=Travel.where(open:true)
+      if params[:destination].present?
+        @travels = Travel.where(destination:"#{params[:destination]}").where(open:true)
+      else
+        @travels=Travel.where(open:true)
+      end
     end
   end
-
-
 
   def show
     @travel = Travel.find(params[:id])
     # @travel_details=@travel.travel_details.where(travel_id:params[:id])
     @travel_details=@travel.travel_details.order("travel_date").order("start_time")
     # @comments=@travel.comments.where(travel_id:params[:id])
-    
+
     if @travel.customer != current_customer
       unless @travel.open
         redirect_to root_path
       end
     end
-    
+
   end
 
   def new

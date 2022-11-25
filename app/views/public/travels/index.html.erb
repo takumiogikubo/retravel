@@ -1,16 +1,185 @@
-<div class="d-flex justify-content-center align-items-center py-2"><h3 class="follow-title mb-0">旅行検索</h3></div>
-<div class="d-flex justify-content-center align-items-center pb-2">
-  <%= form_with url: root_path, method: :get, local: true do |f| %>
-    <%= f.text_field :travel_title, placeholder: "旅行のタイトルで検索" %>
-    <%= f.submit :search %>
-  <% end %>
-</div>
 
 
-<div class="container travel-index">
-  <div class="d-flex flex-wrap">
+    <div class="d-flex justify-content-center align-items-center py-2"><h3 class="follow-title mb-0">旅行検索</h3></div>
+    <div class="d-flex justify-content-center align-items-center pb-2">
+      <%= form_with url: root_path, method: :get, local: true do |f| %>
+        <%= f.text_field :travel_title, placeholder: "旅行のタイトルで検索" %>
+        <%= f.select :destination, Travel.destinations.keys.map.with_index {|k,i| [I18n.t("enums.travel.destination.#{k}"), i]}, include_blank: '--地域で検索--' %>
+        <%= f.submit :search %>
+      <% end %>
+    </div>
+<div class="travel-index d-flex justify-content-center">
+  <div class="col-2 ml-5 mt-3 overflow-auto">
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header header-hokkai py-1" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link sidebar-font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">北海道地方</button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse body-hokkai" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "北海道","?destination=0",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-tohoku py-1" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">東北地方</button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse body-tohoku" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "青森","?destination=1",class:"sidebar-link-font"%></li>
+            <li><%= link_to "岩手","?destination=2",class:"sidebar-link-font"%></li>
+            <li><%= link_to "宮城","?destination=3",class:"sidebar-link-font"%></li>
+            <li><%= link_to "秋田","?destination=4",class:"sidebar-link-font"%></li>
+            <li><%= link_to "山形","?destination=5",class:"sidebar-link-font"%></li>
+            <li><%= link_to "福島","?destination=6",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-kanto py-1" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">関東地方</button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse body-kanto" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "茨城","?destination=7",class:"sidebar-link-font"%></li>
+            <li><%= link_to "栃木","?destination=8",class:"sidebar-link-font"%></li>
+            <li><%= link_to "群馬","?destination=9",class:"sidebar-link-font"%></li>
+            <li><%= link_to "埼玉","?destination=10",class:"sidebar-link-font"%></li>
+            <li><%= link_to "千葉","?destination=11",class:"sidebar-link-font"%></li>
+            <li><%= link_to "東京","?destination=12",class:"sidebar-link-font"%></li>
+            <li><%= link_to "神奈川","?destination=13",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-tyubu py-1" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">中部地方</button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse body-tyubu" aria-labelledby="headingFour" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "新潟","?destination=14",class:"sidebar-link-font"%></li>
+            <li><%= link_to "富山","?destination=15",class:"sidebar-link-font"%></li>
+            <li><%= link_to "石川","?destination=16",class:"sidebar-link-font"%></li>
+            <li><%= link_to "福井","?destination=17",class:"sidebar-link-font"%></li>
+            <li><%= link_to "山梨","?destination=18",class:"sidebar-link-font"%></li>
+            <li><%= link_to "長野","?destination=19",class:"sidebar-link-font"%></li>
+            <li><%= link_to "岐阜","?destination=20",class:"sidebar-link-font"%></li>
+            <li><%= link_to "静岡","?destination=21",class:"sidebar-link-font"%></li>
+            <li><%= link_to "愛知","?destination=22",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-kinki py-1" id="headingFive">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">近畿地方</button>
+          </h5>
+        </div>
+        <div id="collapseFive" class="collapse body-kinki" aria-labelledby="headingFive" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "三重","?destination=23",class:"sidebar-link-font"%></li>
+            <li><%= link_to "滋賀","?destination=24",class:"sidebar-link-font"%></li>
+            <li><%= link_to "京都","?destination=25",class:"sidebar-link-font"%></li>
+            <li><%= link_to "大阪","?destination=26",class:"sidebar-link-font"%></li>
+            <li><%= link_to "兵庫","?destination=27",class:"sidebar-link-font"%></li>
+            <li><%= link_to "奈良","?destination=28",class:"sidebar-link-font"%></li>
+            <li><%= link_to "和歌山","?destination=29",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-tyugoku py-1" id="headingSix">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">中国地方</button>
+          </h5>
+        </div>
+        <div id="collapseSix" class="collapse body-tyugoku" aria-labelledby="headingSix" data-parent="#accordionExample">
+          <div class="card-body">
+            <li><%= link_to "鳥取","?destination=30",class:"sidebar-link-font"%></li>
+            <li><%= link_to "島根","?destination=31",class:"sidebar-link-font"%></li>
+            <li><%= link_to "岡山","?destination=32",class:"sidebar-link-font"%></li>
+            <li><%= link_to "広島","?destination=33",class:"sidebar-link-font"%></li>
+            <li><%= link_to "山口","?destination=34",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-shikoku py-1" id="headingSeven">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">四国地方</button>
+          </h5>
+        </div>
+        <div id="collapseSeven" class="collapse body-shikoku" aria-labelledby="headingSeven" data-parent="#accordionExample">
+          <div class="card-body">
+            <li><%= link_to "徳島","?destination=35",class:"sidebar-link-font"%></li>
+            <li><%= link_to "香川","?destination=36",class:"sidebar-link-font"%></li>
+            <li><%= link_to "愛媛","?destination=37",class:"sidebar-link-font"%></li>
+            <li><%= link_to "高知","?destination=38",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-kyusyu py-1" id="headingEight">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">九州地方</button>
+          </h5>
+        </div>
+        <div id="collapseEight" class="collapse body-kyusyu" aria-labelledby="headingEight" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "福岡","?destination=39",class:"sidebar-link-font"%></li>
+            <li><%= link_to "佐賀","?destination=40",class:"sidebar-link-font"%></li>
+            <li><%= link_to "長崎","?destination=41",class:"sidebar-link-font"%></li>
+            <li><%= link_to "大分","?destination=42",class:"sidebar-link-font"%></li>
+            <li><%= link_to "熊本","?destination=43",class:"sidebar-link-font"%></li>
+            <li><%= link_to "宮崎","?destination=44",class:"sidebar-link-font"%></li>
+            <li><%= link_to "鹿児島","?destination=45",class:"sidebar-link-font"%></li>
+            <li><%= link_to "沖縄","?destination=46",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header header-kaigai py-1" id="headingNine">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed sidebar-font" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">海外</button>
+          </h5>
+        </div>
+        <div id="collapseNine" class="collapse body-kaigai" aria-labelledby="headingNine" data-parent="#accordionExample">
+          <div class="card-body py-2">
+            <li><%= link_to "韓国","?destination=47",class:"sidebar-link-font"%></li>
+            <li><%= link_to "台湾","?destination=48",class:"sidebar-link-font"%></li>
+            <li><%= link_to "香港","?destination=49",class:"sidebar-link-font"%></li>
+            <li><%= link_to "マカオ","?destination=50",class:"sidebar-link-font"%></li>
+            <li><%= link_to "タイ","?destination=51",class:"sidebar-link-font"%></li>
+            <li><%= link_to "マレーシア","?destination=52",class:"sidebar-link-font"%></li>
+            <li><%= link_to "シンガポール","?destination=53",class:"sidebar-link-font"%></li>
+            <li><%= link_to "バリ/インドネシア","?destination=54",class:"sidebar-link-font"%></li>
+            <li><%= link_to "カナダ","?destination=55",class:"sidebar-link-font"%></li>
+            <li><%= link_to "アメリカ","?destination=56",class:"sidebar-link-font"%></li>
+            <li><%= link_to "ハワイ/アメリカ","?destination=57",class:"sidebar-link-font"%></li>
+            <li><%= link_to "グアム","?destination=58",class:"sidebar-link-font"%></li>
+            <li><%= link_to "オーストラリア","?destination=59",class:"sidebar-link-font"%></li>
+            <li><%= link_to "ニュージーランド","?destination=60",class:"sidebar-link-font"%></li>
+            <li><%= link_to "ドイツ","?destination=61",class:"sidebar-link-font"%></li>
+            <li><%= link_to "スペイン","?destination=62",class:"sidebar-link-font"%></li>
+            <li><%= link_to "オーストリア","?destination=63",class:"sidebar-link-font"%></li>
+            <li><%= link_to "その他","?destination=64",class:"sidebar-link-font"%></li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-10 d-flex flex-wrap">
     <% @travels.reverse.each do |travel|%>
-      <div class="card travel-index-card mt-2 mb-2 mx-2 shadow-lg">
+      <div class="card travel-index-card mt-3 mb-2 mx-2 shadow-lg">
         <%= link_to travel_path(travel) do %>
           <%= image_tag travel.get_image(300,300),class:"trim"%>
         <%end%>
