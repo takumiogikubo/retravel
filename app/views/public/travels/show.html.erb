@@ -24,18 +24,8 @@
       <h1 class="d-flex justify-content-center mb-0"><%= @travel.travel_title%></h1>
     </div>
     <div class="d-flex align-items-center justify-content-center">
-      <div class="pr-4">
-        <% if customer_signed_in? %>
-          <% if @travel.good_by?(current_customer) %>
-            <%= link_to travel_goods_path(@travel),class:"travel-show-good-comment_decoration", method: :delete do %>
-              <p class="travel-show-good-comment mb-0"><span class="travel-show-span">♥</span> <%= @travel.goods.count %> いいね</p>
-            <% end %>
-          <% else %>
-            <%= link_to travel_goods_path(@travel),class:"travel-show-good-comment_decoration", method: :post do %>
-              <p class="travel-show-good-comment mb-0">♡ <%= @travel.goods.count %> いいね</p>
-            <% end %>
-          <% end %>
-        <%end%>
+      <div id="good_btn_<%= @travel.id %>" class="pr-4">
+        <%= render 'public/goods/good', travel: @travel %>
       </div>
       <div class="pl-4">
         <%= link_to new_travel_comment_path(@travel),class:"travel-show-good-comment_decoration" do%>

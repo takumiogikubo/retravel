@@ -1,0 +1,11 @@
+<% if customer_signed_in? %>
+  <% if travel.good_by?(current_customer) %>
+    <%= link_to travel_goods_path(travel),class:"travel-show-good-comment_decoration", method: :delete, remote: true do %>
+      <p class="travel-index-good-comment mb-0"><span class="travel-show-span">♥</span><%= travel.goods.count %> いいね</p>
+    <% end %>
+  <% else %>
+    <%= link_to travel_goods_path(travel),class:"travel-show-good-comment_decoration", method: :post, remote: true do %>
+      <p class="travel-index-good-comment mb-0">♡<%= travel.goods.count %> いいね</p>
+    <% end %>
+  <% end %>
+<%end%>
